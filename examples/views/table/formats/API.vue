@@ -59,44 +59,7 @@ export default defineComponent({
     ])
     return {
       tableData,
-      demoCodes: [
-        `
-        import VXETable from 'vxe-table'
-        import XEUtils from 'xe-utils'
-
-        // 格式金额，默认2位数
-        VXETable.formats.add('myAmount', ({ cellValue }, digits = 2) => {
-          return XEUtils.commafy(XEUtils.toNumber(cellValue), { digits })
-        })
-        `,
-        `
-        <vxe-table
-          border
-          :data="tableData">
-          <vxe-column type="seq" width="60"></vxe-column>
-          <vxe-column field="name" title="Name"></vxe-column>
-          <vxe-column field="num1" title="默认两位小数" formatter="myAmount"></vxe-column>
-          <vxe-column field="num2" title="保留3位小数" :formatter="['myAmount', 3]"></vxe-column>
-        </vxe-table>
-        `,
-        `
-        import { defineComponent, ref } from 'vue'
-
-        export default defineComponent({
-          setup () {
-            const tableData = ref([
-              { id: 10001, name: 'Test1', role: 'Develop', num2: 22, num1: 28, address: 'Shenzhen' },
-              { id: 10002, name: 'Test2', role: 'Test', num2: 10, num1: 22, address: 'Guangzhou' },
-              { id: 10003, name: 'Test3', role: 'PM', num2: 5, num1: 32, address: 'Shanghai' },
-              { id: 10004, name: 'Test4', role: 'Designer', num2: 20, num1: 24, address: 'Shanghai' }
-            ]
-            return {
-              tableData
-            }
-          }
-        })
-        `
-      ]
+      demoCodes: []
     }
   }
 })

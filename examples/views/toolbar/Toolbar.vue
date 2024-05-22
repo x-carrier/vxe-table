@@ -109,8 +109,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive, nextTick } from 'vue'
-import { VXETable } from '../../../packages/all'
-import { VxeTableInstance, VxeToolbarInstance } from '../../../types/index'
+import { VxeUI } from '../../../packages'
+import { VxeTableInstance, VxeToolbarInstance } from '../../../types'
 
 export default defineComponent({
   setup  () {
@@ -127,7 +127,7 @@ export default defineComponent({
     const xToolbar = ref({} as VxeToolbarInstance)
 
     const funnelEvent = () => {
-      VXETable.modal.alert({ content: '点击事件' })
+      VxeUI.modal.alert({ content: '点击事件' })
     }
 
     nextTick(() => {

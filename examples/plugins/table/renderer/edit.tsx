@@ -1,10 +1,10 @@
-import { VXETable } from '../../../../packages/all'
+import { VxeUI } from '../../../../packages'
 import EditDownTable from './components/EditDownTable.vue'
 import EditPopupModal from './components/EditPopupModal.vue'
 import EditDownModal from './components/EditDownModal.vue'
 
 // 创建一个简单的输入框渲染
-VXETable.renderer.add('MyInput', {
+VxeUI.renderer.add('MyInput', {
   // 激活时自动聚焦
   autofocus: '.my-cell',
   // 可编辑激活模板
@@ -24,7 +24,7 @@ VXETable.renderer.add('MyInput', {
 })
 
 // 创建一个下拉表格渲染
-VXETable.renderer.add('EditDownTable', {
+VxeUI.renderer.add('EditDownTable', {
   autofocus: '.vxe-input--inner',
   renderEdit (renderOpts, params) {
     return [
@@ -34,7 +34,7 @@ VXETable.renderer.add('EditDownTable', {
 })
 
 // 创建一个弹窗渲染
-VXETable.renderer.add('EditPopupModal', {
+VxeUI.renderer.add('EditPopupModal', {
   autofocus: '.vxe-input--inner',
   renderEdit (renderOpts, params) {
     return [
@@ -44,7 +44,7 @@ VXETable.renderer.add('EditPopupModal', {
 })
 
 // 创建一个复杂的组合渲染
-VXETable.renderer.add('EditDownModal', {
+VxeUI.renderer.add('EditDownModal', {
   autofocus: '.vxe-input--inner',
   renderEdit (renderOpts, params) {
     return [

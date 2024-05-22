@@ -81,8 +81,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { VXETable } from '../../../../packages/all'
-import { VxeTableInstance, VxeTablePropTypes } from '../../../../types/index'
+import { VxeUI } from '../../../../packages'
+import { VxeTableInstance, VxeTablePropTypes } from '../../../../types'
 
 export default defineComponent({
   setup () {
@@ -129,13 +129,13 @@ export default defineComponent({
     const getInsertEvent = () => {
       const $table = xTable.value
       const insertRecords = $table.getInsertRecords()
-      VXETable.modal.alert(insertRecords.length)
+      VxeUI.modal.alert(insertRecords.length)
     }
 
     const getSelectionEvent = () => {
       const $table = xTable.value
       const selectRecords = $table.getCheckboxRecords()
-      VXETable.modal.alert(selectRecords.length)
+      VxeUI.modal.alert(selectRecords.length)
     }
 
     return {
@@ -144,105 +144,7 @@ export default defineComponent({
       insertEvent,
       getInsertEvent,
       getSelectionEvent,
-      demoCodes: [
-        `
-        <vxe-toolbar>
-          <template #buttons>
-            <vxe-button icon="fa fa-plus" @click="insertEvent()">新增</vxe-button>
-            <vxe-button @click="$refs.xTable.removeCheckboxRow()">删除选中</vxe-button>
-            <vxe-button @click="getSelectionEvent">获取选中</vxe-button>
-            <vxe-button icon="fa fa-save" @click="getInsertEvent">获取新增</vxe-button>
-          </template>
-        </vxe-toolbar>
-
-        <vxe-table
-          border
-          show-overflow
-          ref="xTable"
-          height="500"
-          :data="demo1.tableData"
-          :mouse-config="{selected: true}"
-          :checkbox-config="{range: true}"
-          :menu-config="demo1.tableMenu"
-          :keyboard-config="{isArrow: true, isDel: true, isEnter: true, isTab: true, isEdit: true, isChecked: true}"
-          :edit-config="{trigger: 'dblclick', mode: 'cell'}">
-          <vxe-column type="seq" width="60"></vxe-column>
-          <vxe-column type="checkbox" width="60"></vxe-column>
-          <vxe-column field="name" title="Name" :edit-render="{name: 'input'}"></vxe-column>
-          <vxe-column field="role" title="Role" :edit-render="{name: '$input'}"></vxe-column>
-          <vxe-column field="num" title="Number" :edit-render="{name: '$input', props: {type: 'number'}}"></vxe-column>
-          <vxe-column field="address" title="Address" :edit-render="{name: 'input'}"></vxe-column>
-        </vxe-table>
-        `,
-        `
-        import { defineComponent, reactive, ref } from 'vue'
-        import { VXETable, VxeTableInstance, VxeTablePropTypes } from 'vxe-table'
-
-        export default defineComponent({
-          setup () {
-            const demo1 = reactive({
-              tableData: [
-                { id: 10001, name: 'Test1', nickname: 'T1', role: 'Develop', sex: '0', sex2: ['0'], num1: 40, age: 28, address: 'Shenzhen', date12: '', date13: '' },
-                { id: 10002, name: 'Test2', nickname: 'T2', role: 'Designer', sex: '1', sex2: ['0', '1'], num1: 20, age: 22, address: 'Guangzhou', date12: '', date13: '2020-08-20' },
-                { id: 10003, name: 'Test3', nickname: 'T3', role: 'Test', sex: '0', sex2: ['1'], num1: 200, age: 32, address: 'Shanghai', date12: '2020-09-10', date13: '' },
-                { id: 10004, name: 'Test4', nickname: 'T4', role: 'Designer', sex: '1', sex2: ['0'], num1: 30, age: 23, address: 'Shenzhen', date12: '', date13: '2020-12-04' },
-                { id: 10005, name: 'Test5', nickname: 'T5', role: 'Designer', sex: '1', sex2: ['1'], num1: 18, age: 26, address: 'Shenzhen', date12: '', date13: '' },
-                { id: 10006, name: 'Test6', nickname: 'T6', role: 'Designer', sex: '1', sex2: ['1'], num1: 35, age: 28, address: 'BeiJing', date12: '', date13: '2020-09-04' },
-                { id: 10007, name: 'Test7', nickname: 'T7', role: 'Designer', sex: '1', sex2: ['1'], num1: 11, age: 24, address: 'BeiJing', date12: '2020-08-10', date13: '2020-04-22' },
-                { id: 10008, name: 'Test8', nickname: 'T8', role: 'Designer', sex: '0', sex2: ['1'], num1: 30, age: 21, address: 'Shenzhen', date12: '', date13: '' },
-                { id: 10009, name: 'Test9', nickname: 'T9', role: 'Designer', sex: '1', sex2: ['0'], num1: 25, age: 31, address: 'Guangzhou', date12: '', date13: '2020-04-10' },
-                { id: 100010, name: 'Test10', nickname: 'T10', role: 'Designer', sex: '1', sex2: ['1'], num1: 30, age: 29, address: 'BeiJing', date12: '2020-04-18', date13: '2020-04-10' },
-                { id: 100011, name: 'Test11', nickname: 'T11', role: 'Designer', sex: '0', sex2: ['1'], num1: 33, age: 30, address: 'Shenzhen', date12: '', date13: '' },
-                { id: 100012, name: 'Test12', nickname: 'T12', role: 'Designer', sex: '1', sex2: ['1'], num1: 22, age: 20, address: 'Guangzhou', date12: '', date13: '2020-04-11' },
-                { id: 100013, name: 'Test13', nickname: 'T13', role: 'Designer', sex: '1', sex2: ['1'], num1: 19, age: 34, address: 'BeiJing', date12: '', date13: '2020-01-10' }
-              ],
-              tableMenu: {
-                body: {
-                  options: [
-                    [
-                      { code: 'copy', name: '复制', prefixIcon: 'fa fa-copy', disabled: false },
-                      { code: 'remove', name: '删除', disabled: false },
-                      { code: 'save', name: '保存', prefixIcon: 'fa fa-save', disabled: false }
-                    ]
-                  ]
-                }
-              } as VxeTablePropTypes.MenuConfig
-            })
-
-            const xTable = ref({} as VxeTableInstance)
-
-            const insertEvent = async () => {
-              const $table = xTable.value
-              const record = {
-                sex: '1'
-              }
-              const { row: newRow } = await $table.insert(record)
-              await $table.setActiveCell(newRow, 'name')
-            }
-
-            const getInsertEvent = () => {
-              const $table = xTable.value
-              const insertRecords = $table.getInsertRecords()
-              VXETable.modal.alert(insertRecords.length)
-            }
-
-            const getSelectionEvent = () => {
-              const $table = xTable.value
-              const selectRecords = $table.getCheckboxRecords()
-              VXETable.modal.alert(selectRecords.length)
-            }
-
-            return {
-              demo1,
-              xTable,
-              insertEvent,
-              getInsertEvent,
-              getSelectionEvent
-            }
-          }
-        })
-        `
-      ]
+      demoCodes: []
     }
   }
 })

@@ -15,7 +15,6 @@ import RendererDefault from '../views/table/renderer/Default.vue'
 import RendererEdit from '../views/table/renderer/Edit.vue'
 import RendererExpand from '../views/table/renderer/Expand.vue'
 import RendererToolbar from '../views/table/renderer/Toolbar.vue'
-import RendererForm from '../views/table/renderer/Form.vue'
 import RendererEmpty from '../views/table/renderer/Empty.vue'
 
 import CommandsAPI from '../views/table/commands/API.vue'
@@ -247,25 +246,6 @@ import TableEditEvents from '../views/table/edit/Events.vue'
 import TableEditTemplate from '../views/table/edit/Template.vue'
 import TableEditFull from '../views/table/edit/Full.vue'
 
-import ModuleIcon from '../views/icon/Icon.vue'
-import ModuleButton from '../views/button/Button.vue'
-import ModuleRadio from '../views/radio/Radio.vue'
-import ModuleCheckbox from '../views/checkbox/Checkbox.vue'
-import ModuleInput from '../views/input/Input.vue'
-import ModuleTextarea from '../views/textarea/Textarea.vue'
-import ModuleSelect from '../views/select/Select.vue'
-import ModulePager from '../views/pager/Pager.vue'
-import ModuleModal from '../views/modal/Modal.vue'
-import ModuleDrawer from '../views/drawer/Drawer.vue'
-import ModuleTooltip from '../views/tooltip/Tooltip.vue'
-import ModuleToolbar from '../views/toolbar/Toolbar.vue'
-import ModuleForm from '../views/form/Form.vue'
-import ModuleSwitch from '../views/switch/Switch.vue'
-import ModuleList from '../views/list/List.vue'
-import ModulePulldown from '../views/pulldown/Pulldown.vue'
-import ModuleFile from '../views/file/File.vue'
-import ModulePrint from '../views/print/Print.vue'
-
 import VXEAPI from '../views/api/API.vue'
 import Donation from '../views/api/Donation.vue'
 // import Run from '../views/api/Run.vue'
@@ -352,11 +332,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/table/renderer/toolbar',
     name: 'RendererToolbar',
     component: RendererToolbar
-  },
-  {
-    path: '/table/renderer/form',
-    name: 'RendererForm',
-    component: RendererForm
   },
   {
     path: '/table/renderer/empty',
@@ -1470,96 +1445,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/table/edit/full',
     name: 'TableEditFull',
     component: TableEditFull
-  },
-  {
-    path: '/table/module/icon',
-    name: 'ModuleIcon',
-    component: ModuleIcon
-  },
-  {
-    path: '/table/module/button',
-    name: 'ModuleButton',
-    component: ModuleButton
-  },
-  {
-    path: '/table/module/radio',
-    name: 'ModuleRadio',
-    component: ModuleRadio
-  },
-  {
-    path: '/table/module/checkbox',
-    name: 'ModuleCheckbox',
-    component: ModuleCheckbox
-  },
-  {
-    path: '/table/module/input',
-    name: 'ModuleInput',
-    component: ModuleInput
-  },
-  {
-    path: '/table/module/textarea',
-    name: 'ModuleTextarea',
-    component: ModuleTextarea
-  },
-  {
-    path: '/table/module/select',
-    name: 'ModuleSelect',
-    component: ModuleSelect
-  },
-  {
-    path: '/table/module/pager',
-    name: 'ModulePager',
-    component: ModulePager
-  },
-  {
-    path: '/table/module/modal',
-    name: 'ModuleModal',
-    component: ModuleModal
-  },
-  {
-    path: '/table/module/drawer',
-    name: 'ModuleDrawer',
-    component: ModuleDrawer
-  },
-  {
-    path: '/table/module/tooltip',
-    name: 'ModuleTooltip',
-    component: ModuleTooltip
-  },
-  {
-    path: '/table/module/toolbar',
-    name: 'ModuleToolbar',
-    component: ModuleToolbar
-  },
-  {
-    path: '/table/module/form',
-    name: 'ModuleForm',
-    component: ModuleForm
-  },
-  {
-    path: '/table/module/switch',
-    name: 'ModuleSwitch',
-    component: ModuleSwitch
-  },
-  {
-    path: '/table/module/list',
-    name: 'ModuleList',
-    component: ModuleList
-  },
-  {
-    path: '/table/module/pulldown',
-    name: 'ModulePulldown',
-    component: ModulePulldown
-  },
-  {
-    path: '/table/module/file',
-    name: 'ModuleFile',
-    component: ModuleFile
-  },
-  {
-    path: '/table/module/print',
-    name: 'ModulePrint',
-    component: ModulePrint
   },
   {
     path: '/donation/api',

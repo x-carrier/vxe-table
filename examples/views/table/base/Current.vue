@@ -28,8 +28,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { VXETable } from '../../../../packages/all'
-import { VxeTableInstance, VxeTableEvents } from '../../../../types/index'
+import { VxeUI } from '../../../../packages'
+import { VxeTableInstance, VxeTableEvents } from '../../../../types'
 
 export default defineComponent({
   setup () {
@@ -50,7 +50,7 @@ export default defineComponent({
 
     const getCurrentEvent = () => {
       const $table = xTable.value
-      VXETable.modal.alert(JSON.stringify($table.getCurrentRecord()))
+      VxeUI.modal.alert(JSON.stringify($table.getCurrentRecord()))
     }
 
     return {

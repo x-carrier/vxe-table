@@ -36,65 +36,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   setup () {
     return {
-      demoCodes: [
-        `
-        import { createI18n } from 'vue-i18n'
-        import zhCN from 'vxe-table/lib/locale/lang/zh-CN'
-        import enUS from 'vxe-table/lib/locale/lang/en-US'
-
-        const messages = {
-          zh_CN: {
-            ...zhCN
-          },
-          en_US: {
-            ...enUS
-          }
-        }
-
-        const i18n = createI18n({
-          locale: 'zh_CN',
-          messages,
-        })
-
-        export default i18n
-        `,
-        `
-        import { createApp } = 'vue'
-        import i18n from './i18n'
-        import VXETable from 'vxe-table'
-        
-        VXETable.setConfig({
-          // 对组件内置的提示语进行国际化翻译
-          i18n: (key, args) => i18n.global.t(key, args)
-        })
-
-        Vue.use(VXETable)
-
-        createApp(App).use(i18n).use(VXETable).$mount('#app')
-        `,
-        `
-        VXETable.setConfig({
-          // 可选，对参数中的列头、校验提示..等进行自动翻译（只对支持国际化的有效）
-          translate (key, args) {
-            // 例如，只翻译 "app." 开头的键值
-            if (key && key.indexOf('app.') > -1) {
-              return i18n.global.t(key, args)
-            }
-            return key
-          }
-        })
-        `,
-        `
-        <vxe-table
-          border
-          height="600"
-          :data="tableData">
-          <vxe-column field="name" title="app.body.label.name"></vxe-column>
-          <vxe-column field="age" title="app.body.label.age"></vxe-column>
-          <vxe-column field="sex" title="app.body.label.sex"></vxe-column>
-        </vxe-table>
-        `
-      ]
+      demoCodes: []
     }
   }
 })

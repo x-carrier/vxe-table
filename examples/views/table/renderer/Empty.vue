@@ -37,50 +37,7 @@ export default defineComponent({
 
     return {
       tableData,
-      demoCodes: [
-        `
-        import VXETable from 'vxe-table'
-
-        // 创建一个空内容渲染
-        VXETable.renderer.add('NotData', {
-          // 空内容模板
-          renderTableEmptyView (renderOpts, params) {
-            return [
-              <span>
-                <img src="/vxe-table/static/other/img1.gif"/>
-                <p>亲，没有更多数据了！</p>
-              </span>
-            ]
-          }
-        })
-        `,
-        `
-        <vxe-table
-          border
-          resizable
-          height="400"
-          :empty-render="{name: 'NotData'}"
-          :data="tableData">
-          <vxe-column type="seq" width="60"></vxe-column>
-          <vxe-column field="name" title="Name"></vxe-column>
-          <vxe-column field="sex" title="sex"></vxe-column>
-          <vxe-column field="age" title="Age"></vxe-column>
-        </vxe-table>
-        `,
-        `
-        import { defineComponent, ref } from 'vue'
-
-        export default defineComponent({
-          setup () {
-            const tableData = ref([])
-
-            return {
-              tableData
-            }
-          }
-        })
-        `
-      ]
+      demoCodes: []
     }
   }
 })

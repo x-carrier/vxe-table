@@ -66,8 +66,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, nextTick } from 'vue'
-import { VXETable } from '../../../../packages/all'
-import { VxeTableInstance, VxeToolbarInstance, VxeTableEvents } from '../../../../types/index'
+import { VxeUI } from '../../../../packages'
+import { VxeTableInstance, VxeToolbarInstance, VxeTableEvents } from '../../../../types'
 
 export default defineComponent({
   setup () {
@@ -137,15 +137,15 @@ export default defineComponent({
       const visibleColumn = $table.getColumns()
       switch (params.type) {
         case 'confirm': {
-          VXETable.modal.message({ content: `点击了确认，显示为 ${visibleColumn.length} 列`, status: 'info' })
+          VxeUI.modal.message({ content: `点击了确认，显示为 ${visibleColumn.length} 列`, status: 'info' })
           break
         }
         case 'reset': {
-          VXETable.modal.message({ content: `点击了重置，显示为 ${visibleColumn.length} 列`, status: 'info' })
+          VxeUI.modal.message({ content: `点击了重置，显示为 ${visibleColumn.length} 列`, status: 'info' })
           break
         }
         case 'close': {
-          VXETable.modal.message({ content: `关闭了面板，显示为 ${visibleColumn.length} 列`, status: 'info' })
+          VxeUI.modal.message({ content: `关闭了面板，显示为 ${visibleColumn.length} 列`, status: 'info' })
           break
         }
       }

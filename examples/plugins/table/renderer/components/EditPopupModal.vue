@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType, reactive, ref } from 'vue'
-import { VxeGridInstance, VxeGridProps, VxePagerEvents, VxeGlobalRendererHandles } from '../../../../../types/index'
+import { VxeGridInstance, VxeGridProps, VxeGlobalRendererHandles } from '../../../../../types/index'
 
 export default defineComponent({
   name: 'EditPopupModal',
@@ -86,7 +86,7 @@ export default defineComponent({
       demo1.modalVisible = true
     }
 
-    const pageChangeEvent: VxePagerEvents.PageChange = ({ currentPage, pageSize }) => {
+    const pageChangeEvent = ({ currentPage, pageSize }: any) => {
       const { pagerConfig } = gridOptions
       if (pagerConfig) {
         pagerConfig.currentPage = currentPage

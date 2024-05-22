@@ -1,7 +1,7 @@
-import { VXETable } from '../../../../packages/all'
+import { VxeUI } from '../../../../packages'
 
 // 创建一个简单的展开内容渲染
-VXETable.renderer.add('MyExpand', {
+VxeUI.renderer.add('MyExpand', {
   renderExpand (renderOpts, params) {
     const { row } = params
     return [

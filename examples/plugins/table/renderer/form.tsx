@@ -1,19 +1,19 @@
-import { VXETable } from '../../../../packages/all'
+import { VxeUI } from '../../../../packages'
 
 // 创建一个简单的表单-输入框渲染
-VXETable.renderer.add('FormItemInput', {
+VxeUI.renderer.add('FormItemInput', {
   // 项内容模板
   renderItemContent (renderOpts, params) {
-    const { data, property } = params
+    const { data, field } = params
     const { props } = renderOpts
     return [
-      <vxe-input v-model={ data[property] } { ...{ props } }></vxe-input>
+      <vxe-input v-model={ data[field] } { ...{ props } }></vxe-input>
     ]
   }
 })
 
 // 创建一个简单的表单-按钮组渲染
-VXETable.renderer.add('FormItemButtonGroup', {
+VxeUI.renderer.add('FormItemButtonGroup', {
   // 项内容模板
   renderItemContent () {
     return [

@@ -52,65 +52,7 @@ export default defineComponent({
     return {
       tableData,
       linkEvent,
-      demoCodes: [
-        `
-        import VXETable from 'vxe-table'
-
-        // 创建一个简单的超链接渲染
-        VXETable.renderer.add('MyLink', {
-          // 默认显示模板
-          renderDefault (renderOpts, params) {
-            let { row, column } = params
-            let { events } = renderOpts
-            return [
-              <a class="my-link" onClick={ () => events.click(params) }>{row[column.property]}</a>
-            ]
-          },
-          // 导出模板，例如导出插槽中自定义的内容
-          exportMethod (params) {
-            const { row, column } = params
-            return '自定义内容'
-          }
-        })
-        `,
-        `
-        <vxe-table
-          border
-          :data="tableData">
-          <vxe-column type="seq" width="60"></vxe-column>
-          <vxe-column field="name" title="Name" :cell-render="{name: 'MyLink', events: {click: linkEvent}}"></vxe-column>
-          <vxe-column field="sex" title="sex"></vxe-column>
-          <vxe-column field="age" title="Age"></vxe-column>
-        </vxe-table>
-        `,
-        `
-        import { defineComponent, ref } from 'vue'
-
-        export default defineComponent({
-          setup  () {
-            const linkEvent = ({ row }: any) => {
-              console.log(row.name)
-            }
-
-            const tableData = ref([
-              { id: 10001, name: 'Test1', role: 'Develop', sex: 'Man', age: 28, address: 'Shenzhen' },
-              { id: 10002, name: 'Test2', role: 'Test', sex: 'Women', age: 22, address: 'Guangzhou' },
-              { id: 10003, name: 'Test3', role: 'PM', sex: 'Man', age: 32, address: 'Shanghai' },
-              { id: 10004, name: 'Test4', role: 'Designer', sex: 'Women', age: 23, address: 'Shenzhen' },
-              { id: 10005, name: 'Test5', role: 'Develop', sex: 'Women', age: 30, address: 'Shanghai' },
-              { id: 10006, name: 'Test6', role: 'Designer', sex: 'Women', age: 21, address: 'Shenzhen' },
-              { id: 10007, name: 'Test7', role: 'Test', sex: 'Man', age: 29, address: 'Shenzhen' },
-              { id: 10008, name: 'Test8', role: 'Develop', sex: 'Man', age: 35, address: 'Shenzhen' }
-            ])
-            
-            return {
-              tableData,
-              linkEvent
-            }
-          }
-        })
-        `
-      ]
+      demoCodes: []
     }
   }
 })

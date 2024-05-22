@@ -1,8 +1,8 @@
-import { VXETable } from '../../../packages/all'
+import { VxeUI } from '../../../packages'
 import XEUtils from 'xe-utils'
 
 // 自定义全局的格式化处理函数
-VXETable.formats.mixin({
+VxeUI.formats.mixin({
   // 格式化性别
   formatSex ({ cellValue }) {
     return cellValue ? (cellValue === '1' ? '男' : '女') : ''

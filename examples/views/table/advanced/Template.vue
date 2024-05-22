@@ -164,8 +164,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { VXETable } from '../../../../packages/all'
-import { VxeTableInstance, VxeTableEvents, VxeColumnPropTypes, VxeTablePropTypes, VxeCheckboxEvents } from '../../../../types/index'
+import { VxeUI } from '../../../../packages'
+import { VxeTableInstance, VxeTableEvents, VxeColumnPropTypes, VxeTablePropTypes } from '../../../../types'
 import XEUtils from 'xe-utils'
 
 export default defineComponent({
@@ -216,7 +216,7 @@ export default defineComponent({
     }
 
     const clickFooterItem = (items: any, _columnIndex: any) => {
-      VXETable.modal.alert(`点击了表尾第${_columnIndex}列`)
+      VxeUI.modal.alert(`点击了表尾第${_columnIndex}列`)
     }
 
     const checkboxChangeEvent: VxeTableEvents.CheckboxChange = ({ records }) => {
@@ -226,7 +226,7 @@ export default defineComponent({
       demo1.selectRecords = records
     }
 
-    const changeAllEvent: VxeCheckboxEvents.Change = () => {
+    const changeAllEvent = () => {
       const $table = xTable.value
       $table.setAllCheckboxRow(demo1.isAllChecked)
       demo1.selectRecords = $table.getCheckboxRecords()

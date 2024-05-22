@@ -1,7 +1,7 @@
-import { VXETable } from '../../../packages/all'
+import { VxeUI } from '../../../packages'
 
 // 自定义全局的格式化处理函数
-VXETable.validators.mixin({
+VxeUI.validators.mixin({
   mobile: {
     cellValidatorMethod ({ cellValue }) {
       if (!cellValue) {

@@ -1,11 +1,11 @@
-import { VXETable } from '../../../../packages/all'
+import { VxeUI } from '../../../../packages'
 import FilterInput from './components/FilterInput.vue'
 import FilterContent from './components/FilterContent.vue'
 import FilterComplex from './components/FilterComplex.vue'
 import FilterExtend from './components/FilterExtend.vue'
 
 // 创建一个简单的输入框筛选
-VXETable.renderer.add('FilterInput', {
+VxeUI.renderer.add('FilterInput', {
   // 筛选模板
   renderFilter (renderOpts, params) {
     return [
@@ -36,7 +36,7 @@ VXETable.renderer.add('FilterInput', {
 })
 
 // 创建一个条件的渲染器
-VXETable.renderer.add('FilterComplex', {
+VxeUI.renderer.add('FilterComplex', {
   // 不显示底部按钮，使用自定义的按钮
   showFilterFooter: false,
   // 筛选模板
@@ -65,7 +65,7 @@ VXETable.renderer.add('FilterComplex', {
 })
 
 // 创建一个支持列内容的筛选
-VXETable.renderer.add('FilterContent', {
+VxeUI.renderer.add('FilterContent', {
   // 不显示底部按钮，使用自定义的按钮
   showFilterFooter: false,
   // 筛选模板
@@ -91,7 +91,7 @@ VXETable.renderer.add('FilterContent', {
 })
 
 // 创建一个复杂的筛选器
-VXETable.renderer.add('FilterExtend', {
+VxeUI.renderer.add('FilterExtend', {
   // 不显示底部按钮，使用自定义的按钮
   showFilterFooter: false,
   // 筛选模板

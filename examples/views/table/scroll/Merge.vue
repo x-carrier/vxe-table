@@ -54,8 +54,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { VXETable } from '../../../../packages/all'
-import { VxeTableInstance, VxeTablePropTypes } from '../../../../types/index'
+import { VxeUI } from '../../../../packages'
+import { VxeTableInstance, VxeTablePropTypes } from '../../../../types'
 
 export default defineComponent({
   setup () {
@@ -101,7 +101,7 @@ export default defineComponent({
         const startTime = Date.now()
         if ($table) {
           $table.reloadData(data).then(() => {
-            VXETable.modal.message({ content: `渲染 ${size} 行，用时 ${Date.now() - startTime}毫秒`, status: 'info' })
+            VxeUI.modal.message({ content: `渲染 ${size} 行，用时 ${Date.now() - startTime}毫秒`, status: 'info' })
             demo1.loading = false
           })
         } else {
@@ -123,120 +123,7 @@ export default defineComponent({
       xTable,
       demo1,
       footerMethod,
-      demoCodes: [
-        `
-        <vxe-table
-          border
-          resizable
-          show-overflow
-          show-header-overflow
-          show-footer
-          ref="xTable"
-          height="500"
-          :export-config="{}"
-          :merge-cells="demo1.mergeCells"
-          :sort-config="{trigger: 'cell'}"
-          :merge-footer-items="demo1.mergeFooterItems"
-          :footer-method="footerMethod"
-          :loading="demo1.loading">
-          <vxe-column type="seq" width="100"></vxe-column>
-          <vxe-column field="name" title="Name" sortable width="200"></vxe-column>
-          <vxe-column field="id" title="ID" width="200"></vxe-column>
-          <vxe-column field="sex" title="Sex" width="200"></vxe-column>
-          <vxe-column field="rate" title="Rate" width="200"></vxe-column>
-          <vxe-column field="region" title="Region" width="200"></vxe-column>
-          <vxe-column field="time" title="Time" width="200"></vxe-column>
-          <vxe-column field="address" title="Address" width="300" show-overflow></vxe-column>
-          <vxe-column field="updateTime" title="UpdateTime" width="200"></vxe-column>
-          <vxe-column field="createTime" title="CreateTime" width="200"></vxe-column>
-          <vxe-column field="attr1" title="Attr1" width="200"></vxe-column>
-          <vxe-column field="attr2" title="Attr2" width="200"></vxe-column>
-          <vxe-column field="attr3" title="Attr3" width="200"></vxe-column>
-          <vxe-column field="attr4" title="Attr4" width="200"></vxe-column>
-          <vxe-column field="attr5" title="Attr5" width="200"></vxe-column>
-          <vxe-column field="attr6" title="Attr6" width="200"></vxe-column>
-          <vxe-column field="attr7" title="Attr7" width="200"></vxe-column>
-          <vxe-column field="attr8" title="Attr8" width="200"></vxe-column>
-          <vxe-column field="attr11" title="attr11" width="200"></vxe-column>
-          <vxe-column field="attr9" title="Attr9" width="200"></vxe-column>
-          <vxe-column field="attr10" title="attr10" width="200"></vxe-column>
-        </vxe-table>
-        `,
-        `
-        import { defineComponent, reactive, ref } from 'vue'
-        import { VXETable, VxeTableInstance, VxeTablePropTypes } from 'vxe-table'
-
-        export default defineComponent({
-          setup () {
-            const xTable = ref({} as VxeTableInstance)
-
-            const demo1 = reactive({
-              loading: false,
-              mergeCells: [
-                { row: 4, col: 2, rowspan: 2, colspan: 5 },
-                { row: 30, col: 3, rowspan: 10, colspan: 1 },
-                { row: 80, col: 4, rowspan: 30, colspan: 3 }
-              ] as VxeTablePropTypes.MergeCells,
-              mergeFooterItems: [
-                { row: 0, col: 1, rowspan: 1, colspan: 2 },
-                { row: 0, col: 6, rowspan: 1, colspan: 2 },
-                { row: 0, col: 14, rowspan: 2, colspan: 5 },
-                { row: 1, col: 4, rowspan: 1, colspan: 8 }
-              ] as VxeTablePropTypes.MergeFooterItems
-            })
-
-            const mockList = (size: number) => {
-              const list = []
-              for (let index = 0; index < size; index++) {
-                list.push({
-                  name: \`名称\${index}\`,
-                  sex: '0',
-                  num: 123,
-                  age: 18,
-                  num2: 234,
-                  rate: 3,
-                  address: 'shenzhen'
-                })
-              }
-              return list
-            }
-
-            const loadList = (size: number) => {
-              demo1.loading = true
-              setTimeout(() => {
-                const data = mockList(size)
-                // 使用函数式加载，阻断 vue 对大数据的监听
-                const $table = xTable.value
-                const startTime = Date.now()
-                if ($table) {
-                  $table.reloadData(data).then(() => {
-                    VXETable.modal.message({ content: \`渲染 \${size} 行，用时 \${Date.now() - startTime}毫秒\`, status: 'info' })
-                    demo1.loading = false
-                  })
-                } else {
-                  demo1.loading = false
-                }
-              }, 300)
-            }
-
-            const footerMethod: VxeTablePropTypes.FooterMethod = ({ columns }) => {
-              return [
-                columns.map((column, index) => index),
-                columns.map((column, index) => 1000 + index)
-              ]
-            }
-
-            loadList(600)
-
-            return {
-              xTable,
-              demo1,
-              footerMethod
-            }
-          }
-        })
-        `
-      ]
+      demoCodes: []
     }
   }
 })
