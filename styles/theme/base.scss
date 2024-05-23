@@ -11,23 +11,15 @@ $vxe-ui-status-error-color: #f56c6c;
   --vxe-ui-font-size-mini: 12px;
 
   /*font color*/
-  --vxe-ui-font-color: #606266;
   --vxe-ui-font-primary-color: #409eff;
-
   --vxe-ui-font-lighten-color: lighten(#606266, 10%);
   --vxe-ui-font-disabled-color: #BFBFBF;
 
   /*base border*/
   --vxe-ui-border-radius: 4px;
 
-  /*popup*/
-  --vxe-ui-base-popup-border-color: #DADCE0;
-
-  // input
-  --vxe-ui-input-border-color: #dcdfe6;
+  /*input*/
   --vxe-ui-input-disabled-color: #dcdfe6;
-  --vxe-ui-input-disabled-background-color: #f3f3f3;
-  --vxe-ui-input-placeholder-color: #C0C4CC;
   --vxe-ui-input-height-default: 34px;
   --vxe-ui-input-height-medium: 32px;
   --vxe-ui-input-height-small: 30px;
@@ -38,11 +30,9 @@ $vxe-ui-status-error-color: #f56c6c;
   --vxe-ui-table-footer-font-color: var(--vxe-ui-font-color);
   --vxe-ui-table-border-radius: var(--vxe-ui-border-radius);
   --vxe-ui-table-border-width: 1px;
-  --vxe-ui-table-border-color: #e8eaec;
   --vxe-ui-table-resizable-line-color: #D9DDDF;
   --vxe-ui-table-resizable-drag-line-color: var(--vxe-ui-font-primary-color);
-  --vxe-ui-table-header-background-color: #f8f8f9;
-  --vxe-ui-table-footer-background-color: #ffffff;
+  --vxe-ui-table-footer-background-color: var(--vxe-ui-layout-background-color);
   --vxe-ui-table-tree-node-line-color:#909399;
   --vxe-ui-table-tree-node-line-style: dotted;
   --vxe-ui-table-header-font-weight: 700;
@@ -52,15 +42,6 @@ $vxe-ui-status-error-color: #f56c6c;
   --vxe-ui-table-row-height-small: 40px;
   --vxe-ui-table-row-height-mini: 36px;
   --vxe-ui-table-row-line-height: 22px;
-  --vxe-ui-table-row-hover-background-color: #f5f7fa;
-  --vxe-ui-table-row-striped-background-color: #fafafa;
-  --vxe-ui-table-row-hover-striped-background-color: #f5f7fa;
-  --vxe-ui-table-row-radio-checked-background-color: #fff3e0;
-  --vxe-ui-table-row-hover-radio-checked-background-color: #ffebbc;
-  --vxe-ui-table-row-checkbox-checked-background-color: #fff3e0;
-  --vxe-ui-table-row-hover-checkbox-checked-background-color: #ffebbc;
-  --vxe-ui-table-row-current-background-color: #e6f7ff;
-  --vxe-ui-table-row-hover-current-background-color: #d7effb;
 
   --vxe-ui-table-column-padding-default: 13px 0;
   --vxe-ui-table-column-padding-medium: 11px 0;
@@ -106,11 +87,6 @@ $vxe-ui-status-error-color: #f56c6c;
   --vxe-ui-table-validate-error-color: #f56c6c;
   --vxe-ui-table-validate-error-background-color: var(--vxe-ui-layout-background-color);
 
-  /*grid*/
-  --vxe-ui-grid-maximize-background-color: #fff;
-
   /*toolbar*/
-  --vxe-ui-toolbar-background-color: #fff;
   --vxe-ui-toolbar-custom-active-background-color: #D9DADB;
-  --vxe-ui-toolbar-panel-background-color: #fff;
 }
