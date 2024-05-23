@@ -4,7 +4,7 @@ import { formatText } from '../../../ui/src/utils'
 import { getPropClass } from '../../../ui/src/dom'
 import { getSlotVNs } from '../../../ui/src/vn'
 
-import type { VxeTableConstructor, VxeTableMethods, VxeTablePrivateMethods } from '../../../../types/all'
+import type { VxeTableConstructor, VxeTableMethods, VxeTablePrivateMethods } from '../../../../types'
 
 export default defineComponent({
   name: 'VxeTableFilterPanel',
@@ -137,11 +137,13 @@ export default defineComponent({
             onClick: (evnt: MouseEvent) => {
               changeAllOption(evnt, !filterStore.isAllSelected)
             }
-          }, (multiple ? [
-            h('span', {
-              class: ['vxe-checkbox--icon', isAllIndeterminate ? getIcon().TABLE_CHECKBOX_INDETERMINATE : (isAllChecked ? getIcon().TABLE_CHECKBOX_CHECKED : getIcon().TABLE_CHECKBOX_UNCHECKED)]
-            })
-          ] : []).concat([
+          }, (multiple
+            ? [
+                h('span', {
+                  class: ['vxe-checkbox--icon', isAllIndeterminate ? getIcon().TABLE_CHECKBOX_INDETERMINATE : (isAllChecked ? getIcon().TABLE_CHECKBOX_CHECKED : getIcon().TABLE_CHECKBOX_UNCHECKED)]
+                })
+              ]
+            : []).concat([
             h('span', {
               class: 'vxe-checkbox--label'
             }, getI18n('vxe.table.allFilter'))
@@ -149,9 +151,11 @@ export default defineComponent({
         ]),
         h('ul', {
           class: 'vxe-table--filter-body',
-          style: maxHeight ? {
-            maxHeight: `${maxHeight}px`
-          } : {}
+          style: maxHeight
+            ? {
+                maxHeight: `${maxHeight}px`
+              }
+            : {}
         }, filterStore.options.map((item: any) => {
           const isChecked = item._checked
           const isIndeterminate = false
@@ -163,11 +167,13 @@ export default defineComponent({
             onClick: (evnt: MouseEvent) => {
               changeOption(evnt, !item._checked, item)
             }
-          }, (multiple ? [
-            h('span', {
-              class: ['vxe-checkbox--icon', isIndeterminate ? getIcon().TABLE_CHECKBOX_INDETERMINATE : (isChecked ? getIcon().TABLE_CHECKBOX_CHECKED : getIcon().TABLE_CHECKBOX_UNCHECKED)]
-            })
-          ] : []).concat([
+          }, (multiple
+            ? [
+                h('span', {
+                  class: ['vxe-checkbox--icon', isIndeterminate ? getIcon().TABLE_CHECKBOX_INDETERMINATE : (isChecked ? getIcon().TABLE_CHECKBOX_CHECKED : getIcon().TABLE_CHECKBOX_UNCHECKED)]
+                })
+              ]
+            : []).concat([
             h('span', {
               class: 'vxe-checkbox--label'
             }, formatText(item.label, 1))
@@ -184,22 +190,24 @@ export default defineComponent({
       const filterRender = column.filterRender
       const compConf = filterRender ? renderer.get(filterRender.name) : null
       const isDisabled = !hasCheckOption && !filterStore.isAllSelected && !filterStore.isIndeterminate
-      return multiple && (!compConf || compConf.showFilterFooter !== false) ? [
-        h('div', {
-          class: 'vxe-table--filter-footer'
-        }, [
-          h('button', {
-            class: {
-              'is--disabled': isDisabled
-            },
-            disabled: isDisabled,
-            onClick: confirmFilter
-          }, filterOpts.confirmButtonText || getI18n('vxe.table.confirmFilter')),
-          h('button', {
-            onClick: resetFilter
-          }, filterOpts.resetButtonText || getI18n('vxe.table.resetFilter'))
-        ])
-      ] : []
+      return multiple && (!compConf || compConf.showFilterFooter !== false)
+        ? [
+            h('div', {
+              class: 'vxe-table--filter-footer'
+            }, [
+              h('button', {
+                class: {
+                  'is--disabled': isDisabled
+                },
+                disabled: isDisabled,
+                onClick: confirmFilter
+              }, filterOpts.confirmButtonText || getI18n('vxe.table.confirmFilter')),
+              h('button', {
+                onClick: resetFilter
+              }, filterOpts.resetButtonText || getI18n('vxe.table.resetFilter'))
+            ])
+          ]
+        : []
     }
 
     const renderVN = () => {

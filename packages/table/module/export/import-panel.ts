@@ -4,7 +4,7 @@ import XEUtils from 'xe-utils'
 import { parseFile } from '../../../ui/src/utils'
 
 import type { VxeButtonComponent, VxeModalComponent, VxeRadioGroupComponent, VxeRadioComponent } from 'vxe-pc-ui'
-import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types/all'
+import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types'
 
 export default defineComponent({
   name: 'VxeTableImportPanel',
@@ -119,20 +119,22 @@ export default defineComponent({
                 h('tr', [
                   h('td', getI18n('vxe.import.impFile')),
                   h('td', [
-                    hasFile ? h('div', {
-                      class: 'vxe-import-selected--file',
-                      title: selectName
-                    }, [
-                      h('span', selectName),
-                      h('i', {
-                        class: getIcon().INPUT_CLEAR,
-                        onClick: clearFileEvent
-                      })
-                    ]) : h('button', {
-                      ref: refFileBtn,
-                      class: 'vxe-import-select--file',
-                      onClick: selectFileEvent
-                    }, getI18n('vxe.import.impSelect'))
+                    hasFile
+                      ? h('div', {
+                        class: 'vxe-import-selected--file',
+                        title: selectName
+                      }, [
+                        h('span', selectName),
+                        h('i', {
+                          class: getIcon().INPUT_CLEAR,
+                          onClick: clearFileEvent
+                        })
+                      ])
+                      : h('button', {
+                        ref: refFileBtn,
+                        class: 'vxe-import-select--file',
+                        onClick: selectFileEvent
+                      }, getI18n('vxe.import.impSelect'))
                   ])
                 ]),
                 h('tr', [

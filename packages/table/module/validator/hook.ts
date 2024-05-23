@@ -1,11 +1,11 @@
 import { nextTick } from 'vue'
 import XEUtils from 'xe-utils'
-import { getConfig, validators, log } from '@vxe-ui/core'
+import { getConfig, validators, hooks, log } from '@vxe-ui/core'
 import { getFuncText, eqEmptyValue } from '../../../ui/src/utils'
 import { scrollToView } from '../../../ui/src/dom'
 import { handleFieldOrColumn, getRowid } from '../../src/util'
 
-import type { VxeGlobalHooksHandles, TableValidatorMethods, TableValidatorPrivateMethods, VxeTableDefines } from '../../../../types/all'
+import type { TableValidatorMethods, TableValidatorPrivateMethods, VxeTableDefines } from '../../../../types'
 
 /**
  * 校验规则
@@ -42,7 +42,7 @@ class Rule {
 
 const tableValidatorMethodKeys: (keyof TableValidatorMethods)[] = ['fullValidate', 'validate', 'clearValidate']
 
-const validatorHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableValidatorModule', {
   setupTable ($xeTable) {
     const { props, reactData, internalData } = $xeTable
     const { refValidTooltip } = $xeTable.getRefMaps()
@@ -529,6 +529,4 @@ const validatorHook: VxeGlobalHooksHandles.HookOptions = {
   setupGrid ($xeGrid) {
     return $xeGrid.extendTableMethods(tableValidatorMethodKeys)
   }
-}
-
-export default validatorHook
+})

@@ -1,7 +1,8 @@
 import XEUtils from 'xe-utils'
+import { hooks } from '@vxe-ui/core'
 import { browse, hasClass, getAbsolutePos, addClass, removeClass, getEventTargetNode } from '../../../ui/src/dom'
 
-import type { VxeGlobalHooksHandles, TableKeyboardPrivateMethods } from '../../../../types/all'
+import type { TableKeyboardPrivateMethods } from '../../../../types'
 
 function getTargetOffset (target: any, container: any) {
   let offsetTop = 0
@@ -25,7 +26,7 @@ function getTargetOffset (target: any, container: any) {
   return { offsetTop, offsetLeft }
 }
 
-const tableKeyboardHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableKeyboardModule', {
   setupTable ($xeTable) {
     const { props, reactData, internalData } = $xeTable
     const { refElem } = $xeTable.getRefMaps()
@@ -391,6 +392,4 @@ const tableKeyboardHook: VxeGlobalHooksHandles.HookOptions = {
 
     return keyboardMethods
   }
-}
-
-export default tableKeyboardHook
+})

@@ -1,5 +1,5 @@
-import * as VxeTableExport from './packages/components'
+import * as VxeUITable from './packages/components'
 import './styles/all.scss'
 
 export * from './packages/components'
-export default VxeTableExport
+export default VxeUITable

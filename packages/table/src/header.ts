@@ -3,7 +3,7 @@ import XEUtils from 'xe-utils'
 import { convertHeaderColumnToRows, getColReMinWidth } from './util'
 import { hasClass, getOffsetPos, addClass, removeClass } from '../../ui/src/dom'
 
-import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods, VxeTableDefines, VxeColumnPropTypes } from '../../../types/all'
+import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods, VxeTableDefines, VxeColumnPropTypes } from '../../../types'
 
 const renderType = 'header'
 

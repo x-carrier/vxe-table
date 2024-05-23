@@ -1,12 +1,12 @@
-import { createCommentVNode, defineComponent, h, ref, Ref, PropType, inject, nextTick, ComputedRef, onBeforeUnmount, onMounted, onUnmounted, VNode } from 'vue'
+import { createCommentVNode, defineComponent, h, ref, Ref, PropType, inject, nextTick, ComputedRef, onBeforeUnmount, onMounted, onUnmounted } from 'vue'
 import XEUtils from 'xe-utils'
-import { getI18n, renderer } from '@vxe-ui/core'
+import { getI18n, renderer, VxeComponentSlotType } from '@vxe-ui/core'
 import { mergeBodyMethod, getRowid, removeScrollListener, restoreScrollListener, XEBodyScrollElement } from './util'
 import { updateCellTitle, getPropClass } from '../../ui/src/dom'
 import { isEnableConf } from '../../ui/src/utils'
 import { getSlotVNs } from '../../ui/src/vn'
 
-import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableDefines, VxeComponentSlotType, VxeTableMethods, VxeColumnPropTypes, VxeComponentSizeType } from '../../../types/all'
+import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableDefines, VxeTableMethods, VxeColumnPropTypes, VxeComponentSizeType } from '../../../types'
 
 const renderType = 'body'
 
@@ -243,7 +243,7 @@ export default defineComponent({
       if (!fixedHiddenColumn && editConfig && (editRender || cellRender) && (editOpts.showStatus || editOpts.showUpdateStatus)) {
         isDirty = $xeTable.isUpdateByRow(row, column.field)
       }
-      const tdVNs: VNode[] = []
+      const tdVNs: any[] = []
       if (fixedHiddenColumn && (allColumnOverflow ? isAllOverflow : allColumnOverflow)) {
         tdVNs.push(
           h('div', {

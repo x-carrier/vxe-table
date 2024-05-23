@@ -8,21 +8,21 @@
   line-height: 0;
   &.col--filter {
     .vxe-filter--btn {
-      color: var(--vxe-font-color);
+      color: var(--vxe-ui-font-color);
     }
   }
   .vxe-filter--btn {
-    color: var(--vxe-table-column-icon-border-color);
+    color: var(--vxe-ui-table-column-icon-border-color);
     cursor: pointer;
     &:hover {
-      color: var(--vxe-font-color);
+      color: var(--vxe-ui-font-color);
     }
   }
 }
 .is--filter-active {
   .vxe-cell--filter {
     .vxe-filter--btn {
-      color: var(--vxe-primary-color);
+      color: var(--vxe-ui-font-primary-color);
     }
   }
 }
@@ -33,9 +33,9 @@
   position: absolute;
   top: 0;
   min-width: 100px;
-  border-radius: var(--vxe-border-radius);
-  background-color: var(--vxe-table-filter-panel-background-color);
-  border: 1px solid var(--vxe-table-popup-border-color);
+  border-radius: var(--vxe-ui-border-radius);
+  background-color: var(--vxe-ui-layout-background-color);
+  border: 1px solid var(--vxe-ui-base-popup-border-color);
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   z-index: 10;
   &:not(.is--multiple) {
@@ -54,10 +54,10 @@
       padding: 0.25em 0.8em;
       cursor: pointer;
       &.is--checked {
-        color: var(--vxe-primary-color);
+        color: var(--vxe-ui-font-primary-color);
       }
       &:hover {
-        background-color: var(--vxe-table-row-hover-background-color);
+        background-color: var(--vxe-ui-table-row-hover-background-color);
       }
     }
   }
@@ -83,23 +83,23 @@
     }
   }
   .vxe-table--filter-footer {
-    border-top: 1px solid var(--vxe-table-popup-border-color);
+    border-top: 1px solid var(--vxe-ui-base-popup-border-color);
     padding: 0.6em;
     user-select: none;
     button {
       background-color: transparent;
       padding: 0 0.4em;
       border: 0;
-      color: var(--vxe-font-color);
+      color: var(--vxe-ui-font-color);
       cursor: pointer;
       &:focus {
         outline: none;
       }
       &:hover {
-        color: var(--vxe-primary-color);
+        color: var(--vxe-ui-font-primary-color);
       }
       &.is--disabled {
-        color: var(--vxe-font-disabled-color);
+        color: var(--vxe-ui-font-disabled-color);
         cursor: not-allowed;
       }
     }

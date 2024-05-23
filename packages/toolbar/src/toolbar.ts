@@ -4,7 +4,7 @@ import { getConfig, getIcon, getI18n, renderer, commands, log, createEvent, useS
 import { getSlotVNs } from '../../ui/src/vn'
 
 import type { VxeButtonComponent } from 'vxe-pc-ui'
-import type { VxeGridConstructor, GridPrivateMethods, ToolbarMethods, VxeToolbarConstructor, VxeToolbarEmits, VxeToolbarPropTypes, VxeTableConstructor, ToolbarPrivateRef, VxeTableMethods, VxeTablePrivateMethods, ToolbarReactData } from '../../../types/all'
+import type { VxeGridConstructor, GridPrivateMethods, ToolbarMethods, VxeToolbarConstructor, VxeToolbarEmits, VxeToolbarPropTypes, VxeTableConstructor, ToolbarPrivateRef, VxeTableMethods, VxeTablePrivateMethods, ToolbarReactData } from '../../../types'
 
 export default defineComponent({
   name: 'VxeToolbar',

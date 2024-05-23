@@ -218,9 +218,9 @@ setIcon({
   TOOLBAR_TOOLS_MINIMIZE: iconPrefix + 'minimize',
   TOOLBAR_TOOLS_CUSTOM: iconPrefix + 'custom-column',
   TOOLBAR_TOOLS_FIXED_LEFT: iconPrefix + 'fixed-left',
-  TOOLBAR_TOOLS_FIXED_LEFT_ACTIVED: iconPrefix + 'fixed-left-fill',
+  TOOLBAR_TOOLS_FIXED_LEFT_ACTIVE: iconPrefix + 'fixed-left-fill',
   TOOLBAR_TOOLS_FIXED_RIGHT: iconPrefix + 'fixed-right',
-  TOOLBAR_TOOLS_FIXED_RIGHT_ACTIVED: iconPrefix + 'fixed-right-fill'
+  TOOLBAR_TOOLS_FIXED_RIGHT_ACTIVE: iconPrefix + 'fixed-right-fill'
 })
 
 export * from '@vxe-ui/core'

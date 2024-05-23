@@ -3,7 +3,7 @@ import { getI18n, formats, log } from '@vxe-ui/core'
 import { toFilters } from './util'
 import { getFuncText } from '../../ui/src/utils'
 
-import type { VxeTableConstructor, VxeTablePrivateMethods } from '../../../types/all'
+import type { VxeTableConstructor, VxeTablePrivateMethods } from '../../../types'
 
 export class ColumnInfo {
   /* eslint-disable @typescript-eslint/no-use-before-define */

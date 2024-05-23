@@ -5,7 +5,8 @@ import { getCellValue, setCellValue } from '../../table/src/util'
 import { getFuncText, formatText, isEmptyValue } from '../../ui/src/utils'
 import { getOnName } from '../../ui/src/vn'
 
-import type { VxeGlobalRendererHandles, VxeColumnPropTypes } from '../../../types/all'
+import type { VxeButtonComponent } from 'vxe-pc-ui'
+import type { VxeGlobalRendererHandles, VxeColumnPropTypes } from '../../../types'
 
 const componentDefaultModelProp = 'modelValue'
 
@@ -326,7 +327,7 @@ function oldEditRender (renderOpts: VxeGlobalRendererHandles.RenderEditOptions, 
  */
 function oldButtonEditRender (renderOpts: any, params: any) {
   return [
-    h(resolveComponent('vxe-button') as ComponentOptions, {
+    h(resolveComponent('vxe-button') as VxeButtonComponent, {
       ...getCellEditProps(renderOpts, params, null),
       ...getComponentOns(renderOpts, params)
     })

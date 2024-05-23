@@ -2,7 +2,7 @@ import { defineComponent, h, Teleport, inject, ref, Ref, createCommentVNode } fr
 import { getFuncText } from '../../../ui/src/utils'
 import XEUtils from 'xe-utils'
 
-import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types/all'
+import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types'
 
 export default defineComponent({
   name: 'VxeTableMenuPanel',
@@ -42,75 +42,83 @@ export default defineComponent({
           }],
           style: ctxMenuStore.style
         }, ctxMenuStore.list.map((options, gIndex) => {
-          return options.every(item => item.visible === false) ? createCommentVNode() : h('ul', {
-            class: 'vxe-context-menu--option-wrapper',
-            key: gIndex
-          }, options.map((item, index) => {
-            const hasChildMenus = item.children && item.children.some((child: any) => child.visible !== false)
-            return item.visible === false ? null : h('li', {
-              class: [item.className, {
-                'link--disabled': item.disabled,
-                'link--active': item === ctxMenuStore.selected
-              }],
-              key: `${gIndex}_${index}`
-            }, [
-              h('a', {
-                class: 'vxe-context-menu--link',
-                onClick (evnt: Event) {
-                  $xeTable.ctxMenuLinkEvent(evnt, item)
-                },
-                onMouseover (evnt: Event) {
-                  $xeTable.ctxMenuMouseoverEvent(evnt, item)
-                },
-                onMouseout (evnt: Event) {
-                  $xeTable.ctxMenuMouseoutEvent(evnt, item)
-                }
-              }, [
-                h('i', {
-                  class: ['vxe-context-menu--link-prefix', item.prefixIcon]
-                }),
-                h('span', {
-                  class: 'vxe-context-menu--link-content'
-                }, getFuncText(item.name)),
-                h('i', {
-                  class: ['vxe-context-menu--link-suffix', hasChildMenus ? item.suffixIcon || 'suffix--haschild' : item.suffixIcon]
-                })
-              ]),
-              hasChildMenus ? h('ul', {
-                class: ['vxe-table--context-menu-clild-wrapper', {
-                  'is--show': item === ctxMenuStore.selected && ctxMenuStore.showChild
-                }]
-              }, item.children.map((child: any, cIndex: any) => {
-                return child.visible === false ? null : h('li', {
-                  class: [child.className, {
-                    'link--disabled': child.disabled,
-                    'link--active': child === ctxMenuStore.selectChild
+          return options.every(item => item.visible === false)
+            ? createCommentVNode()
+            : h('ul', {
+              class: 'vxe-context-menu--option-wrapper',
+              key: gIndex
+            }, options.map((item, index) => {
+              const hasChildMenus = item.children && item.children.some((child: any) => child.visible !== false)
+              return item.visible === false
+                ? null
+                : h('li', {
+                  class: [item.className, {
+                    'link--disabled': item.disabled,
+                    'link--active': item === ctxMenuStore.selected
                   }],
-                  key: `${gIndex}_${index}_${cIndex}`
+                  key: `${gIndex}_${index}`
                 }, [
                   h('a', {
                     class: 'vxe-context-menu--link',
                     onClick (evnt: Event) {
-                      $xeTable.ctxMenuLinkEvent(evnt, child)
+                      $xeTable.ctxMenuLinkEvent(evnt, item)
                     },
                     onMouseover (evnt: Event) {
-                      $xeTable.ctxMenuMouseoverEvent(evnt, item, child)
+                      $xeTable.ctxMenuMouseoverEvent(evnt, item)
                     },
                     onMouseout (evnt: Event) {
                       $xeTable.ctxMenuMouseoutEvent(evnt, item)
                     }
                   }, [
                     h('i', {
-                      class: ['vxe-context-menu--link-prefix', child.prefixIcon]
+                      class: ['vxe-context-menu--link-prefix', item.prefixIcon]
                     }),
                     h('span', {
                       class: 'vxe-context-menu--link-content'
-                    }, getFuncText(child.name))
-                  ])
+                    }, getFuncText(item.name)),
+                    h('i', {
+                      class: ['vxe-context-menu--link-suffix', hasChildMenus ? item.suffixIcon || 'suffix--haschild' : item.suffixIcon]
+                    })
+                  ]),
+                  hasChildMenus
+                    ? h('ul', {
+                      class: ['vxe-table--context-menu-clild-wrapper', {
+                        'is--show': item === ctxMenuStore.selected && ctxMenuStore.showChild
+                      }]
+                    }, item.children.map((child: any, cIndex: any) => {
+                      return child.visible === false
+                        ? null
+                        : h('li', {
+                          class: [child.className, {
+                            'link--disabled': child.disabled,
+                            'link--active': child === ctxMenuStore.selectChild
+                          }],
+                          key: `${gIndex}_${index}_${cIndex}`
+                        }, [
+                          h('a', {
+                            class: 'vxe-context-menu--link',
+                            onClick (evnt: Event) {
+                              $xeTable.ctxMenuLinkEvent(evnt, child)
+                            },
+                            onMouseover (evnt: Event) {
+                              $xeTable.ctxMenuMouseoverEvent(evnt, item, child)
+                            },
+                            onMouseout (evnt: Event) {
+                              $xeTable.ctxMenuMouseoutEvent(evnt, item)
+                            }
+                          }, [
+                            h('i', {
+                              class: ['vxe-context-menu--link-prefix', child.prefixIcon]
+                            }),
+                            h('span', {
+                              class: 'vxe-context-menu--link-content'
+                            }, getFuncText(child.name))
+                          ])
+                        ])
+                    }))
+                    : null
                 ])
-              })) : null
-            ])
-          }))
+            }))
         }))
       ])
     }

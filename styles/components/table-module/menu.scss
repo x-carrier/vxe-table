@@ -10,20 +10,20 @@
   top: 0;
   left: 0;
   font-size: 12px;
-  border: 1px solid var(--vxe-table-popup-border-color);
+  border: 1px solid var(--vxe-ui-base-popup-border-color);
   box-shadow: 3px 3px 4px -2px rgba(0,0,0,.6);
   padding: 0 1px;
   user-select: none;
-  color: var(--vxe-font-color);
-  font-family: var(--vxe-font-family);
-  background-color: var(--vxe-table-menu-background-color);
+  color: var(--vxe-ui-font-color);
+  font-family: var(--vxe-ui-font-family);
+  background-color: var(--vxe-ui-table-menu-background-color);
 }
 .vxe-context-menu--link {
   display: block;
   padding: 0 2.5em;
-  width: var(--vxe-table-menu-item-width);
+  width: var(--vxe-ui-table-menu-item-width);
   line-height: 26px;
-  color: var(--vxe-font-color);
+  color: var(--vxe-ui-font-color);
   cursor: pointer;
   .vxe-context-menu--link-prefix,
   .vxe-context-menu--link-suffix {
@@ -81,7 +81,7 @@
     }
     &.link--disabled {
       & > .vxe-context-menu--link {
-        color: var(--vxe-font-disabled-color);
+        color: var(--vxe-ui-font-disabled-color);
         cursor: no-drop;
       }
       &.link--active {

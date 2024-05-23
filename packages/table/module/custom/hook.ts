@@ -1,10 +1,11 @@
 import { nextTick } from 'vue'
+import { hooks } from '@vxe-ui/core'
 
-import type { VxeGlobalHooksHandles, TableCustomMethods, TableCustomPrivateMethods } from '../../../../types/all'
+import type { TableCustomMethods, TableCustomPrivateMethods } from '../../../../types'
 
 const tableCustomMethodKeys: (keyof TableCustomMethods)[] = ['openCustom', 'closeCustom']
 
-const customHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableCustomModule', {
   setupTable ($xeTable) {
     const { reactData, internalData } = $xeTable
     const { computeCustomOpts } = $xeTable.getComputeMaps()
@@ -110,6 +111,4 @@ const customHook: VxeGlobalHooksHandles.HookOptions = {
   setupGrid ($xeGrid) {
     return $xeGrid.extendTableMethods(tableCustomMethodKeys)
   }
-}
-
-export default customHook
+})

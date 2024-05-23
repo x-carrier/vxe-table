@@ -5,10 +5,10 @@ import { addClass, removeClass } from '../../../ui/src/dom'
 import XEUtils from 'xe-utils'
 
 import type { VxeModalComponent, VxeButtonComponent, VxeRadioGroupComponent, VxeTooltipComponent } from 'vxe-pc-ui'
-import type { VxeTableDefines, VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods, VxeColumnPropTypes } from '../../../../types/all'
+import type { VxeTableDefines, VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods, VxeColumnPropTypes } from '../../../../types'
 
 export default defineComponent({
-  name: 'VxeTableCustomPanel',
+  name: 'TableCustomPanel',
   props: {
     customStore: {
       type: Object as PropType<VxeTableDefines.VxeTableCustomStoreObj>,
@@ -303,30 +303,32 @@ export default defineComponent({
                   class: 'vxe-checkbox--label'
                 }, colTitle)
               ]),
-              !parent && customOpts.allowFixed ? h('div', {
-                class: 'vxe-table-custom--fixed-option'
-              }, [
-                h('span', {
-                  class: ['vxe-table-custom--fixed-left-option', column.fixed === 'left' ? getIcon().TOOLBAR_TOOLS_FIXED_LEFT_ACTIVED : getIcon().TOOLBAR_TOOLS_FIXED_LEFT, {
-                    'is--checked': column.fixed === 'left',
-                    'is--disabled': isMaxFixedColumn && !column.fixed
-                  }],
-                  title: getI18n(column.fixed === 'left' ? 'vxe.toolbar.cancelFixed' : 'vxe.toolbar.fixedLeft'),
-                  onClick: () => {
-                    changeFixedOption(column, 'left')
-                  }
-                }),
-                h('span', {
-                  class: ['vxe-table-custom--fixed-right-option', column.fixed === 'right' ? getIcon().TOOLBAR_TOOLS_FIXED_RIGHT_ACTIVED : getIcon().TOOLBAR_TOOLS_FIXED_RIGHT, {
-                    'is--checked': column.fixed === 'right',
-                    'is--disabled': isMaxFixedColumn && !column.fixed
-                  }],
-                  title: getI18n(column.fixed === 'right' ? 'vxe.toolbar.cancelFixed' : 'vxe.toolbar.fixedRight'),
-                  onClick: () => {
-                    changeFixedOption(column, 'right')
-                  }
-                })
-              ]) : null
+              !parent && customOpts.allowFixed
+                ? h('div', {
+                  class: 'vxe-table-custom--fixed-option'
+                }, [
+                  h('span', {
+                    class: ['vxe-table-custom--fixed-left-option', column.fixed === 'left' ? getIcon().TOOLBAR_TOOLS_FIXED_LEFT_ACTIVE : getIcon().TOOLBAR_TOOLS_FIXED_LEFT, {
+                      'is--checked': column.fixed === 'left',
+                      'is--disabled': isMaxFixedColumn && !column.fixed
+                    }],
+                    title: getI18n(column.fixed === 'left' ? 'vxe.toolbar.cancelFixed' : 'vxe.toolbar.fixedLeft'),
+                    onClick: () => {
+                      changeFixedOption(column, 'left')
+                    }
+                  }),
+                  h('span', {
+                    class: ['vxe-table-custom--fixed-right-option', column.fixed === 'right' ? getIcon().TOOLBAR_TOOLS_FIXED_RIGHT_ACTIVE : getIcon().TOOLBAR_TOOLS_FIXED_RIGHT, {
+                      'is--checked': column.fixed === 'right',
+                      'is--disabled': isMaxFixedColumn && !column.fixed
+                    }],
+                    title: getI18n(column.fixed === 'right' ? 'vxe.toolbar.cancelFixed' : 'vxe.toolbar.fixedRight'),
+                    onClick: () => {
+                      changeFixedOption(column, 'right')
+                    }
+                  })
+                ])
+                : null
             ])
           )
         }
@@ -365,23 +367,27 @@ export default defineComponent({
         ]),
         h('ul', {
           class: 'vxe-table-custom--body',
-          style: maxHeight ? {
-            maxHeight: `${maxHeight}px`
-          } : {},
+          style: maxHeight
+            ? {
+                maxHeight: `${maxHeight}px`
+              }
+            : {},
           ...customWrapperOns
         }, colVNs),
-        customOpts.showFooter ? h('div', {
-          class: 'vxe-table-custom--footer'
-        }, [
-          h('button', {
-            class: 'btn--reset',
-            onClick: resetCustomEvent
-          }, customOpts.resetButtonText || getI18n('vxe.toolbar.customRestore')),
-          h('button', {
-            class: 'btn--confirm',
-            onClick: confirmCustomEvent
-          }, customOpts.confirmButtonText || getI18n('vxe.toolbar.customConfirm'))
-        ]) : null
+        customOpts.showFooter
+          ? h('div', {
+            class: 'vxe-table-custom--footer'
+          }, [
+            h('button', {
+              class: 'btn--reset',
+              onClick: resetCustomEvent
+            }, customOpts.resetButtonText || getI18n('vxe.toolbar.customRestore')),
+            h('button', {
+              class: 'btn--confirm',
+              onClick: confirmCustomEvent
+            }, customOpts.confirmButtonText || getI18n('vxe.toolbar.customConfirm'))
+          ])
+          : null
       ])
     }
 
@@ -415,15 +421,17 @@ export default defineComponent({
               h('td', {
                 class: 'vxe-table-custom-popup--column-item col--sort'
               }, [
-                column.level === 1 ? h('span', {
-                  class: 'vxe-table-custom-popup--column-sort-btn',
-                  onMousedown: sortMousedownEvent,
-                  onMouseup: sortMouseupEvent
-                }, [
-                  h('i', {
-                    class: 'vxe-icon-sort'
-                  })
-                ]) : null
+                column.level === 1
+                  ? h('span', {
+                    class: 'vxe-table-custom-popup--column-sort-btn',
+                    onMousedown: sortMousedownEvent,
+                    onMouseup: sortMouseupEvent
+                  }, [
+                    h('i', {
+                      class: 'vxe-icon-sort'
+                    })
+                  ])
+                  : null
               ]),
               h('td', {
                 class: 'vxe-table-custom-popup--column-item col--name'
@@ -456,22 +464,24 @@ export default defineComponent({
               h('td', {
                 class: 'vxe-table-custom-popup--column-item col--fixed'
               }, [
-                !parent && customOpts.allowFixed ? h(resolveComponent('vxe-radio-group') as VxeRadioGroupComponent, {
-                  modelValue: column.fixed || '',
-                  type: 'button',
-                  size: 'mini',
-                  options: [
-                    { label: getI18n('vxe.custom.setting.fixedLeft'), value: 'left', disabled: isMaxFixedColumn },
-                    { label: getI18n('vxe.custom.setting.fixedUnset'), value: '' },
-                    { label: getI18n('vxe.custom.setting.fixedRight'), value: 'right', disabled: isMaxFixedColumn }
-                  ],
-                  'onUpdate:modelValue' (value: any) {
-                    column.fixed = value
-                  },
-                  onChange () {
-                    changePopupFixedOption(column)
-                  }
-                }) : null
+                !parent && customOpts.allowFixed
+                  ? h(resolveComponent('vxe-radio-group') as VxeRadioGroupComponent, {
+                    modelValue: column.fixed || '',
+                    type: 'button',
+                    size: 'mini',
+                    options: [
+                      { label: getI18n('vxe.custom.setting.fixedLeft'), value: 'left', disabled: isMaxFixedColumn },
+                      { label: getI18n('vxe.custom.setting.fixedUnset'), value: '' },
+                      { label: getI18n('vxe.custom.setting.fixedRight'), value: 'right', disabled: isMaxFixedColumn }
+                    ],
+                    'onUpdate:modelValue' (value: any) {
+                      column.fixed = value
+                    },
+                    onChange () {
+                      changePopupFixedOption(column)
+                    }
+                  })
+                  : null
               ])
             ])
           )

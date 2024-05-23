@@ -4,11 +4,11 @@ import { menus, hooks, globalEvents, GLOBAL_EVENT_KEYS } from '@vxe-ui/core'
 import { getDomNode, getAbsolutePos, getEventTargetNode } from '../../../ui/src/dom'
 import { isEnableConf, hasChildrenList } from '../../../ui/src/utils'
 
-import type { TableMenuMethods, TableMenuPrivateMethods } from '../../../../types/all'
+import type { TableMenuMethods, TableMenuPrivateMethods } from '../../../../types'
 
 const tableMenuMethodKeys: (keyof TableMenuMethods)[] = ['closeMenu']
 
-hooks.add('$tableMenu', {
+hooks.add('tableMenuModule', {
   setupTable ($xeTable) {
     const { xID, props, reactData, internalData } = $xeTable
     const { refElem, refTableFilter, refTableMenu } = $xeTable.getRefMaps()

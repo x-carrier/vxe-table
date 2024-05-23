@@ -1,29 +1,24 @@
-import { App } from 'vue'
-import { VxeGlobalConfig } from './ui'
-
-import VxeTable from './components/table'
-import VxeColumn from './components/column'
-import VxeColgroup from './components/colgroup'
-import VxeGrid from './components/grid'
-import VxeToolbar from './components/toolbar'
-
-export function install (app: App, options?: VxeGlobalConfig): void
+import VxeColumn from 'vxe-pc-ui/types/components/column'
+import VxeColgroup from 'vxe-pc-ui/types/components/colgroup'
+import VxeTable from 'vxe-pc-ui/types/components/table'
+import VxeGrid from 'vxe-pc-ui/types/components/grid'
+import VxeToolbar from 'vxe-pc-ui/types/components/toolbar'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    VxeTable: typeof VxeTable
     VxeColumn: typeof VxeColumn
     VxeColgroup: typeof VxeColgroup
+    VxeTable: typeof VxeTable
     VxeGrid: typeof VxeGrid
     VxeToolbar: typeof VxeToolbar
   }
 }
 
-export * from './ui'
+export * from 'vxe-pc-ui'
 
 // Component
-export * from './components/table'
-export * from './components/column'
-export * from './components/colgroup'
-export * from './components/grid'
-export * from './components/toolbar'
+export * from 'vxe-pc-ui/types/components/column'
+export * from 'vxe-pc-ui/types/components/colgroup'
+export * from 'vxe-pc-ui/types/components/table'
+export * from 'vxe-pc-ui/types/components/grid'
+export * from 'vxe-pc-ui/types/components/toolbar'

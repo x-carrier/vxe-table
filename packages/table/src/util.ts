@@ -3,7 +3,7 @@ import XEUtils from 'xe-utils'
 import { ColumnInfo } from './columnInfo'
 import { isPx, isScale } from '../../ui/src/dom'
 
-import type { VxeTableConstructor, VxeTablePrivateMethods, VxeTableDefines } from '../../../types/all'
+import type { VxeTableConstructor, VxeTablePrivateMethods, VxeTableDefines } from '../../../types'
 
 const getAllConvertColumns = (columns: any, parentColumn?: any) => {
   const result: any[] = []

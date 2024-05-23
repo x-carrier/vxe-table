@@ -1,11 +1,11 @@
 import { inject, nextTick } from 'vue'
 import XEUtils from 'xe-utils'
-import { VxeUI, getConfig, getI18n, renderer, log } from '@vxe-ui/core'
+import { VxeUI, getConfig, getI18n, hooks, renderer, log } from '@vxe-ui/core'
 import { isColumnInfo, mergeBodyMethod, getCellValue } from '../../src/util'
 import { parseFile, formatText } from '../../../ui/src/utils'
 import { createHtmlPage, getExportBlobByContent } from './util'
 
-import type { VxeGlobalHooksHandles, VxeGridConstructor, VxeGridPrivateMethods, TableExportMethods } from '../../../../types/all'
+import type { VxeGridConstructor, VxeGridPrivateMethods, TableExportMethods } from '../../../../types'
 
 let htmlCellElem: any
 
@@ -278,7 +278,7 @@ function checkImportData (columns: any[], fields: string[]) {
 
 const tableExportMethodKeys: (keyof TableExportMethods)[] = ['exportData', 'importByFile', 'importData', 'saveFile', 'readFile', 'print', 'openImport', 'openExport', 'openPrint']
 
-const tableExportHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableExportModule', {
   setupTable ($xeTable) {
     const { props, reactData, internalData } = $xeTable
     const { computeTreeOpts, computePrintOpts, computeExportOpts, computeImportOpts, computeCustomOpts, computeSeqOpts, computeRadioOpts, computeCheckboxOpts, computeColumnOpts } = $xeTable.getComputeMaps()
@@ -1318,6 +1318,4 @@ const tableExportHook: VxeGlobalHooksHandles.HookOptions = {
   setupGrid ($xeGrid) {
     return $xeGrid.extendTableMethods(tableExportMethodKeys)
   }
-}
-
-export default tableExportHook
+})

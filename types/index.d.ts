@@ -1,4 +1,4 @@
-import * as VxeUIExport from './all'
+import * as VxeUITable from './all'
 
 export * from './all'
-export default VxeUIExport
+export default VxeUITable

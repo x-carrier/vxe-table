@@ -1,7 +1,6 @@
 import { App } from 'vue'
 import { VxeUI } from '@vxe-ui/core'
 import VxeTableComponent from './src/table'
-import './render'
 import './module/filter/hook'
 import './module/menu/hook'
 import './module/edit/hook'
@@ -9,6 +8,7 @@ import './module/export/hook'
 import './module/keyboard/hook'
 import './module/validator/hook'
 import './module/custom/hook'
+import './render'
 
 export const VxeTable = Object.assign({}, VxeTableComponent, {
   install (app: App) {

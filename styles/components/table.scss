@@ -1,20 +1,20 @@
 @import '../helpers/mixin.scss';
-@import '../base/common.scss';
+@import './table-module/all.scss';
 
 %DefaultColumnHeight {
-  height: var(--vxe-table-row-height-default);
+  height: var(--vxe-ui-table-row-height-default);
 }
 
 %MediumColumnHeight {
-  height: var(--vxe-table-row-height-medium);
+  height: var(--vxe-ui-table-row-height-medium);
 }
 
 %SmallColumnHeight {
-  height: var(--vxe-table-row-height-small);
+  height: var(--vxe-ui-table-row-height-small);
 }
 
 %MiniColumnHeight {
-  height: var(--vxe-table-row-height-mini);
+  height: var(--vxe-ui-table-row-height-mini);
 }
 
 .vxe-table-slots,
@@ -31,7 +31,7 @@
   border: 0;
 }
 .vxe-table--render-wrapper {
-  background-color: var(--vxe-table-body-background-color);
+  background-color: var(--vxe-ui-layout-background-color);
 }
 .vxe-table--body-wrapper {
   scroll-behavior: auto;
@@ -48,7 +48,7 @@
 .vxe-table--filter-wrapper {
   .vxe-default-input,
   .vxe-default-textarea {
-    background-color: var(--vxe-table-body-background-color);
+    background-color: var(--vxe-ui-layout-background-color);
   }
   .vxe-default-input,
   .vxe-default-textarea,
@@ -56,15 +56,15 @@
     outline: 0;
     padding: 0 2px;
     width: 100%;
-    color: var(--vxe-font-color);
-    border-radius: var(--vxe-border-radius);
-    border: 1px solid var(--vxe-input-border-color);
+    color: var(--vxe-ui-font-color);
+    border-radius: var(--vxe-ui-border-radius);
+    border: 1px solid var(--vxe-ui-input-border-color);
     &:focus {
-      border: 1px solid var(--vxe-primary-color);
+      border: 1px solid var(--vxe-ui-font-primary-color);
     }
     &[disabled] {
       cursor: not-allowed;
-      background-color: var(--vxe-input-disabled-background-color);
+      background-color: var(--vxe-ui-input-disabled-background-color);
     }
   }
   .vxe-default-input,
@@ -81,7 +81,7 @@
       height: 24px;
     }
     &::placeholder {
-      color: var(--vxe-input-placeholder-color);
+      color: var(--vxe-ui-input-placeholder-color);
     }
   }
   .vxe-default-textarea {
@@ -136,7 +136,7 @@
   }
   .vxe-table--cell-copy-area {
     &[half="1"] {
-      background-size: var(--vxe-table-cell-copy-area-border-width) 12px, 0 12px, 12px var(--vxe-table-cell-copy-area-border-width), 12px var(--vxe-table-cell-copy-area-border-width);
+      background-size: var(--vxe-ui-table-cell-copy-area-border-width) 12px, 0 12px, 12px var(--vxe-ui-table-cell-copy-area-border-width), 12px var(--vxe-ui-table-cell-copy-area-border-width);
     }
   }
 }
@@ -151,15 +151,15 @@
   }
   .vxe-table--cell-copy-area {
     &[half="1"] {
-      background-size: 0 12px, var(--vxe-table-cell-copy-area-border-width) 12px, 12px var(--vxe-table-cell-copy-area-border-width), 12px var(--vxe-table-cell-copy-area-border-width);
+      background-size: 0 12px, var(--vxe-ui-table-cell-copy-area-border-width) 12px, 12px var(--vxe-ui-table-cell-copy-area-border-width), 12px var(--vxe-ui-table-cell-copy-area-border-width);
     }
   }
 }
 
 /*复选框-范围选择*/
 .vxe-table--checkbox-range {
-  background-color: var(--vxe-table-checkbox-range-background-color);
-  border: var(--vxe-table-checkbox-range-border-width) solid var(--vxe-table-checkbox-range-border-color);
+  background-color: var(--vxe-ui-table-checkbox-range-background-color);
+  border: var(--vxe-ui-table-checkbox-range-border-width) solid var(--vxe-ui-table-checkbox-range-border-color);
 }
 
 .vxe-table--cell-area {
@@ -167,8 +167,8 @@
   font-size: 0;
   display: none;
   & > .vxe-table--cell-main-area {
-    background-color: var(--vxe-table-cell-area-background-color);
-    border: var(--vxe-table-cell-area-border-width) solid var(--vxe-table-cell-area-border-color);
+    background-color: var(--vxe-ui-table-cell-area-background-color);
+    border: var(--vxe-ui-table-cell-area-border-width) solid var(--vxe-ui-table-cell-area-border-color);
   }
   .vxe-table--cell-main-area-btn {
     display: none;
@@ -178,14 +178,14 @@
     width: 7px;
     height: 7px;
     border-style: solid;
-    border-color: var(--vxe-table-cell-main-area-extension-border-color);
+    border-color: var(--vxe-ui-table-cell-main-area-extension-border-color);
     border-width: 1px 0 0 1px;
-    background-color: var(--vxe-table-cell-main-area-extension-background-color);
+    background-color: var(--vxe-ui-table-cell-main-area-extension-background-color);
     pointer-events: auto;
     cursor: crosshair;
   }
   .vxe-table--cell-extend-area {
-    border: var(--vxe-table-cell-extend-area-border-width) solid var(--vxe-table-cell-extend-area-border-color);
+    border: var(--vxe-ui-table-cell-extend-area-border-width) solid var(--vxe-ui-table-cell-extend-area-border-color);
   }
 }
 
@@ -198,22 +198,22 @@
 }
 
 .vxe-table--cell-copy-area {
-  background: linear-gradient(0deg, transparent 6px, var(--vxe-table-cell-copy-area-border-color) 6px) repeat-y,
-              linear-gradient(0deg, transparent 50%, var(--vxe-table-cell-copy-area-border-color) 0) repeat-y,
-              linear-gradient(90deg, transparent 50%, var(--vxe-table-cell-copy-area-border-color) 0) repeat-x,
-              linear-gradient(90deg, transparent 50%, var(--vxe-table-cell-copy-area-border-color) 0) repeat-x;
-  background-size: var(--vxe-table-cell-copy-area-border-width) 12px, var(--vxe-table-cell-copy-area-border-width) 12px, 12px var(--vxe-table-cell-copy-area-border-width), 12px var(--vxe-table-cell-copy-area-border-width);
+  background: linear-gradient(0deg, transparent 6px, var(--vxe-ui-table-cell-copy-area-border-color) 6px) repeat-y,
+              linear-gradient(0deg, transparent 50%, var(--vxe-ui-table-cell-copy-area-border-color) 0) repeat-y,
+              linear-gradient(90deg, transparent 50%, var(--vxe-ui-table-cell-copy-area-border-color) 0) repeat-x,
+              linear-gradient(90deg, transparent 50%, var(--vxe-ui-table-cell-copy-area-border-color) 0) repeat-x;
+  background-size: var(--vxe-ui-table-cell-copy-area-border-width) 12px, var(--vxe-ui-table-cell-copy-area-border-width) 12px, 12px var(--vxe-ui-table-cell-copy-area-border-width), 12px var(--vxe-ui-table-cell-copy-area-border-width);
   background-position: 0 0, 100% 0, 0 0, 0 100%;
   animation: moveCopyCellBorder .5s infinite linear;
 }
 
 .vxe-table--cell-active-area {
-  border: var(--vxe-table-cell-active-area-border-width) solid var(--vxe-table-cell-active-area-border-color);
+  border: var(--vxe-ui-table-cell-active-area-border-width) solid var(--vxe-ui-table-cell-active-area-border-color);
 }
 
 .vxe-table--cell-multi-area {
   & > .vxe-table--cell-main-area {
-    background-color: var(--vxe-table-cell-area-background-color);
+    background-color: var(--vxe-ui-table-cell-area-background-color);
   }
 }
 
@@ -221,25 +221,25 @@
 .vxe-table--render-default {
   &.is--round {
     %AllRadius {
-      border-radius: var(--vxe-table-border-radius);
+      border-radius: var(--vxe-ui-table-border-radius);
     }
     %TopRadius {
-      border-radius: var(--vxe-table-border-radius) var(--vxe-table-border-radius) 0 0;
+      border-radius: var(--vxe-ui-table-border-radius) var(--vxe-ui-table-border-radius) 0 0;
     }
     %TopLeftRadius {
-      border-radius: var(--vxe-table-border-radius) 0 0 0;
+      border-radius: var(--vxe-ui-table-border-radius) 0 0 0;
     }
     %TopRightRadius {
-      border-radius: 0 var(--vxe-table-border-radius) 0 0;
+      border-radius: 0 var(--vxe-ui-table-border-radius) 0 0;
     }
     %BottomRadius {
-      border-radius: 0 0 var(--vxe-table-border-radius) var(--vxe-table-border-radius);
+      border-radius: 0 0 var(--vxe-ui-table-border-radius) var(--vxe-ui-table-border-radius);
     }
     %BottomLeftRadius {
-      border-radius: 0 0 0 var(--vxe-table-border-radius);
+      border-radius: 0 0 0 var(--vxe-ui-table-border-radius);
     }
     %BottomRightRadius {
-      border-radius: 0 0 var(--vxe-table-border-radius) 0;
+      border-radius: 0 0 var(--vxe-ui-table-border-radius) 0;
     }
     @extend %AllRadius;
     .vxe-table--border-line {
@@ -312,13 +312,13 @@
 /*header*/
 .vxe-table {
   .vxe-table--header-wrapper {
-    color: var(--vxe-table-header-font-color);
+    color: var(--vxe-ui-table-header-font-color);
     .vxe-table--header-border-line {
       position: absolute;
       left: 0;
       bottom: 0;
       height: 0;
-      border-bottom: var(--vxe-table-border-width) solid var(--vxe-table-border-color);
+      border-bottom: var(--vxe-ui-table-border-width) solid var(--vxe-ui-table-border-color);
     }
   }
   /*排序*/
@@ -347,20 +347,29 @@
   }
   .vxe-sort--asc-btn,
   .vxe-sort--desc-btn {
-    color: var(--vxe-table-column-icon-border-color);
+    color: var(--vxe-ui-table-column-icon-border-color);
     cursor: pointer;
     &:hover {
-      color: var(--vxe-font-color);
+      color: var(--vxe-ui-font-color);
     }
     &.sort--active {
-      color: var(--vxe-primary-color);
+      color: var(--vxe-ui-font-primary-color);
     }
+  }
+}
+
+.vxe-sort--asc-btn,
+.vxe-sort--desc-btn,
+.vxe-filter--btn {
+  &:before,
+  &:after {
+    @include createAnimationTransition(border);
   }
 }
 
 .vxe-header--column {
   position: relative;
-  font-weight: var(--vxe-table-header-font-weight);
+  font-weight: var(--vxe-ui-table-header-font-weight);
   // user-select: none;
   &.col--ellipsis {
     & > .vxe-cell {
@@ -381,11 +390,11 @@
   }
   .vxe-cell--required-icon {
     display: inline-block;
-    color: var(--vxe-table-validate-error-color);
+    color: var(--vxe-ui-table-validate-error-color);
     width: 0.8em;
     height: 1em;
     line-height: 1em;
-    font-family: var(--vxe-icon-font-family);
+    font-family: Verdana,Arial,Tahoma;
     font-weight: normal;
     position: relative;
     &:before {
@@ -433,7 +442,7 @@
       &:before {
         width: 1px;
         height: 50%;
-        background-color: var(--vxe-table-resizable-line-color);
+        background-color: var(--vxe-ui-table-resizable-line-color);
       }
       &:after {
         width: 0;
@@ -454,18 +463,18 @@
 /*table*/
 .vxe-table--render-default {
   position: relative;
-  font-size: var(--vxe-font-size);
-  color: var(--vxe-font-color);
-  font-family: var(--vxe-font-family);
+  font-size: var(--vxe-ui-font-size-default);
+  color: var(--vxe-ui-font-color);
+  font-family: var(--vxe-ui-font-family);
   direction: ltr;
   .vxe-table--body-wrapper {
     table {
-      background-color: var(--vxe-table-body-background-color);
+      background-color: var(--vxe-ui-layout-background-color);
     }
   }
   .vxe-table--footer-wrapper {
     table {
-      background-color: var(--vxe-table-footer-background-color);
+      background-color: var(--vxe-ui-table-footer-background-color);
     }
   }
   .vxe-table--header,
@@ -492,30 +501,30 @@
   }
   .vxe-body--row {
     &.row--stripe {
-      background-color: var(--vxe-table-row-striped-background-color);
+      background-color: var(--vxe-ui-table-row-striped-background-color);
     }
     &.row--radio {
-      background-color: var(--vxe-table-row-radio-checked-background-color);
+      background-color: var(--vxe-ui-table-row-radio-checked-background-color);
     }
     &.row--checked {
-      background-color: var(--vxe-table-row-checkbox-checked-background-color);
+      background-color: var(--vxe-ui-table-row-checkbox-checked-background-color);
     }
     &.row--current {
-      background-color: var(--vxe-table-row-current-background-color);
+      background-color: var(--vxe-ui-table-row-current-background-color);
     }
     &.row--hover {
-      background-color: var(--vxe-table-row-hover-background-color);
+      background-color: var(--vxe-ui-table-row-hover-background-color);
       &.row--stripe {
-        background-color: var(--vxe-table-row-hover-striped-background-color);
+        background-color: var(--vxe-ui-table-row-hover-striped-background-color);
       }
       &.row--radio {
-        background-color: var(--vxe-table-row-hover-radio-checked-background-color);
+        background-color: var(--vxe-ui-table-row-hover-radio-checked-background-color);
       }
       &.row--checked {
-        background-color: var(--vxe-table-row-hover-checkbox-checked-background-color);
+        background-color: var(--vxe-ui-table-row-hover-checkbox-checked-background-color);
       }
       &.row--current {
-        background-color: var(--vxe-table-row-hover-current-background-color);
+        background-color: var(--vxe-ui-table-row-hover-current-background-color);
       }
     }
   }
@@ -523,46 +532,46 @@
   //   .vxe-body--row {
   //     &.row--stripe {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-row-striped-background-color);
+  //         background-color: var(--vxe-ui-table-row-striped-background-color);
   //       }
   //     }
   //     &.row--radio {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-row-radio-checked-background-color);
+  //         background-color: var(--vxe-ui-table-row-radio-checked-background-color);
   //       }
   //     }
   //     &.row--checked {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-row-checkbox-checked-background-color);
+  //         background-color: var(--vxe-ui-table-row-checkbox-checked-background-color);
   //       }
   //     }
   //     &.row--current {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-row-current-background-color);
+  //         background-color: var(--vxe-ui-table-row-current-background-color);
   //       }
   //     }
   //     &.row--hover {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-row-hover-background-color);
+  //         background-color: var(--vxe-ui-table-row-hover-background-color);
   //       }
   //       &.row--stripe {
   //         .vxe-tree--btn-wrapper {
-  //           background-color: var(--vxe-table-row-hover-striped-background-color);
+  //           background-color: var(--vxe-ui-table-row-hover-striped-background-color);
   //         }
   //       }
   //       &.row--radio {
   //         .vxe-tree--btn-wrapper {
-  //           background-color: var(--vxe-table-row-hover-radio-checked-background-color);
+  //           background-color: var(--vxe-ui-table-row-hover-radio-checked-background-color);
   //         }
   //       }
   //       &.row--checked {
   //         .vxe-tree--btn-wrapper {
-  //           background-color: var(--vxe-table-row-hover-checkbox-checked-background-color);
+  //           background-color: var(--vxe-ui-table-row-hover-checkbox-checked-background-color);
   //         }
   //       }
   //       &.row--current {
   //         .vxe-tree--btn-wrapper {
-  //           background-color: var(--vxe-table-row-hover-current-background-color);
+  //           background-color: var(--vxe-ui-table-row-hover-current-background-color);
   //         }
   //       }
   //     }
@@ -600,7 +609,7 @@
     .vxe-header--column {
       &:not(.col--seq) {
         &:hover {
-          background-color: var(--vxe-table-column-hover-background-color);
+          background-color: var(--vxe-ui-table-column-hover-background-color);
         }
       }
     }
@@ -619,15 +628,15 @@
   .vxe-body--column,
   .vxe-footer--column {
     position: relative;
-    line-height: var(--vxe-table-row-line-height);
+    line-height: var(--vxe-ui-table-row-line-height);
     text-align: left;
     &:not(.col--ellipsis) {
-      padding: var(--vxe-table-column-padding-default);
+      padding: var(--vxe-ui-table-column-padding-default);
     }
     &.col--current {
-      background-color: var(--vxe-table-column-current-background-color);
+      background-color: var(--vxe-ui-table-column-current-background-color);
       // .vxe-tree--btn-wrapper {
-      //   background-color: var(--vxe-table-column-current-background-color);
+      //   background-color: var(--vxe-ui-table-column-current-background-color);
       // }
     }
     &.col--center {
@@ -643,7 +652,7 @@
   //   .vxe-footer--column {
   //     &.col--current {
   //       .vxe-tree--btn-wrapper {
-  //         background-color: var(--vxe-table-column-current-background-color);
+  //         background-color: var(--vxe-ui-table-column-current-background-color);
   //       }
   //     }
   //   }
@@ -666,13 +675,13 @@
   
   /*边框*/
   .vxe-table--footer-wrapper {
-    border-top: var(--vxe-table-border-width) solid var(--vxe-table-border-color);
+    border-top: var(--vxe-ui-table-border-width) solid var(--vxe-ui-table-border-color);
   }
   &.border--default,
   &.border--full,
   &.border--outer {
     .vxe-table--header-wrapper {
-      background-color: var(--vxe-table-header-background-color);
+      background-color: var(--vxe-ui-table-header-background-color);
     }
   }
   &.border--default,
@@ -680,9 +689,9 @@
     .vxe-header--column,
     .vxe-body--column,
     .vxe-footer--column {
-      background-image: linear-gradient(var(--vxe-table-border-color), var(--vxe-table-border-color));
+      background-image: linear-gradient(var(--vxe-ui-table-border-color), var(--vxe-ui-table-border-color));
       background-repeat: no-repeat;
-      background-size: 100% var(--vxe-table-border-width);
+      background-size: 100% var(--vxe-ui-table-border-width);
       background-position: right bottom;
     }
   }
@@ -690,15 +699,15 @@
     .vxe-header--column,
     .vxe-body--column,
     .vxe-footer--column {
-      background-image: linear-gradient(var(--vxe-table-border-color), var(--vxe-table-border-color)), linear-gradient(var(--vxe-table-border-color), var(--vxe-table-border-color));
+      background-image: linear-gradient(var(--vxe-ui-table-border-color), var(--vxe-ui-table-border-color)), linear-gradient(var(--vxe-ui-table-border-color), var(--vxe-ui-table-border-color));
       background-repeat: no-repeat;
-      background-size: var(--vxe-table-border-width) 100%, 100% var(--vxe-table-border-width);
+      background-size: var(--vxe-ui-table-border-width) 100%, 100% var(--vxe-ui-table-border-width);
       background-position: right top, right bottom;
     }
     .vxe-table--fixed-left-wrapper {
-      // border-right: 1px solid var(--vxe-table-border-color);
+      // border-right: 1px solid var(--vxe-ui-table-border-color);
       .vxe-body--column{
-        border-right-color: var(--vxe-table-border-color);
+        border-right-color: var(--vxe-ui-table-border-color);
       }
     }
   }
@@ -710,9 +719,9 @@
       .vxe-header--row {
         &:last-child {
           .vxe-header--gutter {
-            background-image: linear-gradient(var(--vxe-table-border-color), var(--vxe-table-border-color));
+            background-image: linear-gradient(var(--vxe-ui-table-border-color), var(--vxe-ui-table-border-color));
             background-repeat: no-repeat;
-            background-size: 100% var(--vxe-table-border-width);
+            background-size: 100% var(--vxe-ui-table-border-width);
             background-position: right bottom;
           }
         }
@@ -722,7 +731,7 @@
   &.border--inner,
   &.border--none {
     .vxe-table--header-wrapper {
-      background-color: var(--vxe-table-header-background-color);
+      background-color: var(--vxe-ui-table-header-background-color);
     }
     .vxe-table--fixed-left-wrapper {
       border-right: 0;
@@ -743,16 +752,16 @@
   }
   
   &.size--medium {
-    font-size: var(--vxe-font-size-medium);
+    font-size: var(--vxe-ui-font-size-medium);
     .vxe-table--empty-placeholder,
     .vxe-table--empty-block {
-      min-height: var(--vxe-table-row-height-medium);
+      min-height: var(--vxe-ui-table-row-height-medium);
     }
     .vxe-header--column,
     .vxe-body--column,
     .vxe-footer--column {
       &:not(.col--ellipsis) {
-        padding: var(--vxe-table-column-padding-medium);
+        padding: var(--vxe-ui-table-column-padding-medium);
       }
     }
     .vxe-cell {
@@ -769,16 +778,16 @@
     }
   }
   &.size--small {
-    font-size: var(--vxe-font-size-small);
+    font-size: var(--vxe-ui-font-size-small);
     .vxe-table--empty-placeholder,
     .vxe-table--empty-block {
-      min-height: var(--vxe-table-row-height-small);
+      min-height: var(--vxe-ui-table-row-height-small);
     }
     .vxe-header--column,
     .vxe-body--column,
     .vxe-footer--column {
       &:not(.col--ellipsis) {
-        padding: var(--vxe-table-column-padding-small);
+        padding: var(--vxe-ui-table-column-padding-small);
       }
     }
     .vxe-cell {
@@ -795,16 +804,16 @@
     }
   }
   &.size--mini {
-    font-size: var(--vxe-font-size-mini);
+    font-size: var(--vxe-ui-font-size-mini);
     .vxe-table--empty-placeholder,
     .vxe-table--empty-block {
-      min-height: var(--vxe-table-row-height-mini);
+      min-height: var(--vxe-ui-table-row-height-mini);
     }
     .vxe-header--column,
     .vxe-body--column,
     .vxe-footer--column {
       &:not(.col--ellipsis) {
-        padding: var(--vxe-table-column-padding-mini);
+        padding: var(--vxe-ui-table-column-padding-mini);
       }
     }
     .vxe-cell {
@@ -823,13 +832,13 @@
   .vxe-cell {
     white-space: pre-line;
     word-break: break-all;
-    padding-left: var(--vxe-table-cell-padding-left);
-    padding-right: var(--vxe-table-cell-padding-right);
+    padding-left: var(--vxe-ui-table-cell-padding-left);
+    padding-right: var(--vxe-ui-table-cell-padding-right);
   }
 
   // 单元格占位符
   .vxe-cell--placeholder {
-    color: var(--vxe-table-cell-placeholder-color);
+    color: var(--vxe-ui-table-cell-placeholder-color);
   }
 
   // 单选框和复选框
@@ -875,13 +884,13 @@
     left: 0;
     width: 200px;
     &.scrolling--middle {
-      box-shadow: var(--vxe-table-fixed-left-scrolling-box-shadow);
+      box-shadow: var(--vxe-ui-table-fixed-left-scrolling-box-shadow);
     }
   }
   .vxe-table--fixed-right-wrapper {
     right: 0;
     &.scrolling--middle {
-      box-shadow: var(--vxe-table-fixed-right-scrolling-box-shadow);
+      box-shadow: var(--vxe-ui-table-fixed-right-scrolling-box-shadow);
     }
   }
   .vxe-table--header-wrapper,
@@ -925,7 +934,7 @@
       content: "";
       display: block;
       height: 100%;
-      background-color: var(--vxe-table-resizable-drag-line-color);
+      background-color: var(--vxe-ui-table-resizable-drag-line-color);
     }
   }
 
@@ -938,7 +947,7 @@
     height: 100%;
     z-index: 10;
     pointer-events: none;
-    border: var(--vxe-table-border-width) solid var(--vxe-table-border-color);
+    border: var(--vxe-ui-table-border-width) solid var(--vxe-ui-table-border-color);
   }
 
   /*树形节点*/
@@ -967,8 +976,8 @@
     bottom: -0.9em;
     width: 0.8em;
     border-width: 0 0 1px 1px;
-    border-style: var(--vxe-table-tree-node-line-style);
-    border-color: var(--vxe-table-tree-node-line-color);
+    border-style: var(--vxe-ui-table-tree-node-line-style);
+    border-color: var(--vxe-ui-table-tree-node-line-color);
     pointer-events: none;
   }
   .vxe-cell--tree-node {
@@ -987,9 +996,10 @@
   }
   .vxe-tree--node-btn {
     display: block;
-    color: var(--vxe-font-lighten-color);
+    color: var(--vxe-ui-font-lighten-color);
+    @include createAnimationTransition(transform);
     &:hover {
-      color: var(--vxe-font-color);
+      color: var(--vxe-ui-font-color);
     }
   }
   .vxe-tree-cell {
@@ -1017,9 +1027,10 @@
       height: 1em;
       text-align: center;
       user-select: none;
-      color: var(--vxe-font-lighten-color);
+      color: var(--vxe-ui-font-lighten-color);
+      @include createAnimationTransition(transform);
       &:hover {
-        color: var(--vxe-font-color);
+        color: var(--vxe-ui-font-color);
       }
     }
     &+.vxe-table--expand-label {
@@ -1027,7 +1038,7 @@
     }
   }
   .vxe-body--expanded-column {
-    border-bottom: var(--vxe-table-border-width) solid var(--vxe-table-border-color);
+    border-bottom: var(--vxe-ui-table-border-width) solid var(--vxe-ui-table-border-color);
     &.col--ellipsis {
       & > .vxe-body--expanded-cell {
         overflow: hidden;
@@ -1080,7 +1091,7 @@
         }
       }
       & > .vxe-cell {
-        max-height: var(--vxe-table-row-height-default);
+        max-height: var(--vxe-ui-table-row-height-default);
       }
     }
   }
@@ -1091,7 +1102,7 @@
       &.col--ellipsis {
         @extend %MediumColumnHeight;
         & > .vxe-cell {
-          max-height: var(--vxe-table-row-height-medium);
+          max-height: var(--vxe-ui-table-row-height-medium);
         }
       }
     }
@@ -1109,7 +1120,7 @@
       &.col--ellipsis {
         @extend %SmallColumnHeight;
         & > .vxe-cell {
-          max-height: var(--vxe-table-row-height-small);
+          max-height: var(--vxe-ui-table-row-height-small);
         }
       }
     }
@@ -1127,7 +1138,7 @@
       &.col--ellipsis {
         @extend %MiniColumnHeight;
         & > .vxe-cell {
-          max-height: var(--vxe-table-row-height-mini);
+          max-height: var(--vxe-ui-table-row-height-mini);
         }
       }
     }
@@ -1142,7 +1153,7 @@
   /*暂无数据*/
   .vxe-table--empty-placeholder,
   .vxe-table--empty-block {
-    min-height: var(--vxe-table-row-height-default);
+    min-height: var(--vxe-ui-table-row-height-default);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -1174,7 +1185,7 @@
 
   .vxe-body--column {
     &.col--selected {
-      box-shadow: inset 0px 0px 0px 2px var(--vxe-primary-color);
+      box-shadow: inset 0px 0px 0px 2px var(--vxe-ui-font-primary-color);
     }
   }
 
@@ -1194,24 +1205,24 @@
         transform: translateX(-50%);
         text-align: left;
         z-index: 4;
-        padding-left: var(--vxe-table-cell-padding-left);
-        padding-right: var(--vxe-table-cell-padding-right);
+        padding-left: var(--vxe-ui-table-cell-padding-left);
+        padding-right: var(--vxe-ui-table-cell-padding-right);
         .vxe-cell--valid-error-msg {
           display: inline-block;
-          border-radius: var(--vxe-border-radius);
-          color: var(--vxe-table-validate-error-color);
-          background-color: var(--vxe-table-validate-error-background-color);
+          border-radius: var(--vxe-ui-border-radius);
+          color: var(--vxe-ui-table-validate-error-color);
+          background-color: var(--vxe-ui-table-validate-error-background-color);
           pointer-events: auto;
         }
       }
       .vxe-default-input,
       .vxe-default-textarea,
       .vxe-default-select {
-        border-color: var(--vxe-table-validate-error-color);
+        border-color: var(--vxe-ui-table-validate-error-color);
       }
       .vxe-input {
         > .vxe-input--inner {
-          border-color: var(--vxe-table-validate-error-color);
+          border-color: var(--vxe-ui-table-validate-error-color);
         }
       }
 
@@ -1286,7 +1297,7 @@
   /*单元格标记删除状态*/
   .vxe-body--row {
     &.row--pending {
-      color: var(--vxe-table-validate-error-color);
+      color: var(--vxe-ui-table-validate-error-color);
       text-decoration: line-through;
       cursor: no-drop;
       .vxe-body--column {
@@ -1298,7 +1309,7 @@
           left: 0;
           width: 100%;
           height: 0;
-          border-bottom: 1px solid var(--vxe-table-validate-error-color);
+          border-bottom: 1px solid var(--vxe-ui-table-validate-error-color);
           z-index: 1;
         }
       }
@@ -1312,12 +1323,12 @@
         position: relative;
         &:before {
           content: "";
-          top: calc(var(--vxe-table-cell-dirty-width) * -1);
-          left: calc(var(--vxe-table-cell-dirty-width) * -1);
+          top: calc(var(--vxe-ui-table-cell-dirty-width) * -1);
+          left: calc(var(--vxe-ui-table-cell-dirty-width) * -1);
           position: absolute;
-          border-width: var(--vxe-table-cell-dirty-width);
+          border-width: var(--vxe-ui-table-cell-dirty-width);
           border-style: solid;
-          border-color: transparent var(--vxe-table-cell-dirty-insert-color) transparent transparent;
+          border-color: transparent var(--vxe-ui-table-cell-dirty-insert-color) transparent transparent;
           transform: rotate(45deg);
         }
       }
@@ -1328,12 +1339,12 @@
       position: relative;
       &:before {
         content: "";
-        top: calc(var(--vxe-table-cell-dirty-width) * -1);
-        left: calc(var(--vxe-table-cell-dirty-width) * -1);
+        top: calc(var(--vxe-ui-table-cell-dirty-width) * -1);
+        left: calc(var(--vxe-ui-table-cell-dirty-width) * -1);
         position: absolute;
-        border-width: var(--vxe-table-cell-dirty-width);
+        border-width: var(--vxe-ui-table-cell-dirty-width);
         border-style: solid;
-        border-color: transparent var(--vxe-table-cell-dirty-update-color) transparent transparent;
+        border-color: transparent var(--vxe-ui-table-cell-dirty-update-color) transparent transparent;
         transform: rotate(45deg);
       }
     }
@@ -1344,9 +1355,9 @@
     &.cell--highlight {
       .vxe-body--column {
         &.col--active {
-          box-shadow: inset 0px 0px 0px 2px var(--vxe-primary-color);
+          box-shadow: inset 0px 0px 0px 2px var(--vxe-ui-font-primary-color);
           &.col--valid-error {
-            box-shadow: inset 0px 0px 0px 2px var(--vxe-table-validate-error-color);
+            box-shadow: inset 0px 0px 0px 2px var(--vxe-ui-table-validate-error-color);
           }
           .vxe-cell {
             .vxe-default-input,
@@ -1355,7 +1366,7 @@
               padding: 0;
             }
             .vxe-default-input {
-              height: var(--vxe-table-row-line-height);
+              height: var(--vxe-ui-table-row-line-height);
             }
             .vxe-input {
               .vxe-input--inner {
@@ -1364,7 +1375,7 @@
               }
             }
             .vxe-textarea {
-              height: calc(var(--vxe-table-row-line-height) - 1px);
+              height: calc(var(--vxe-ui-table-row-line-height) - 1px);
               .vxe-textarea--inner {
                 border: 0;
               }
@@ -1386,8 +1397,8 @@
 div.vxe-table--tooltip-wrapper {
   &.vxe-table--valid-error {
     padding: 0;
-    color: var(--vxe-table-validate-error-color);
-    background-color: var(--vxe-table-validate-error-background-color);
+    color: var(--vxe-ui-table-validate-error-color);
+    background-color: var(--vxe-ui-table-validate-error-background-color);
     &.old-cell-valid {
       padding: 8px 12px;
       background-color: #f56c6c;
@@ -1398,7 +1409,7 @@ div.vxe-table--tooltip-wrapper {
 
 /*footer*/
 .vxe-table--footer-wrapper {
-  color: var(--vxe-table-footer-font-color);
+  color: var(--vxe-ui-table-footer-font-color);
   margin-top: -1px;
   &.body--wrapper{
     overflow-x: auto;

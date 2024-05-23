@@ -1,5 +1,4 @@
 @import '../../helpers/mixin.scss';
-@import '../../base/common.scss';
 
 .vxe-table-custom--option {
   display: flex;
@@ -12,10 +11,10 @@
   top: -4px;
   right: 2px;
   text-align: left;
-  background-color: var(--vxe-toolbar-panel-background-color);
+  background-color: var(--vxe-ui-toolbar-panel-background-color);
   z-index: 19;
-  border: 1px solid var(--vxe-table-border-color);
-  border-radius: var(--vxe-border-radius);
+  border: 1px solid var(--vxe-ui-table-border-color);
+  border-radius: var(--vxe-ui-border-radius);
   box-shadow: 0 1px 6px rgba(0,0,0,.2);
   &.is--active {
     display: block;
@@ -49,7 +48,7 @@
 .vxe-table-custom--header {
   padding: 0.28em 0;
   font-weight: 700;
-  border-bottom: 1px solid var(--vxe-table-popup-border-color);
+  border-bottom: 1px solid var(--vxe-ui-base-popup-border-color);
 }
 
 .vxe-table-custom--body {
@@ -57,27 +56,27 @@
   max-height: 20em;
   .vxe-table-custom--checkbox-option {
     &:hover {
-      background-color: var(--vxe-table-row-hover-background-color);
+      background-color: var(--vxe-ui-table-row-hover-background-color);
     }
   }
 }
 
 .vxe-table-custom--footer {
-  border-top: 1px solid var(--vxe-table-popup-border-color);
+  border-top: 1px solid var(--vxe-ui-base-popup-border-color);
   text-align: right;
   button {
     background-color: transparent;
     width: 50%;
     height: 2.5em;
     border: 0;
-    color: var(--vxe-font-color);
+    color: var(--vxe-ui-font-color);
     text-align: center;
     cursor: pointer;
     &:focus {
       outline: none;
     }
     &:hover {
-      color: var(--vxe-primary-color);
+      color: var(--vxe-ui-font-primary-color);
     }
   }
 }
@@ -106,11 +105,11 @@
   cursor: pointer;
   &.is--checked,
   &:hover {
-    color: var(--vxe-primary-color);
+    color: var(--vxe-ui-font-primary-color);
   }
   &.is--disabled {
     cursor: no-drop;
-    color: var(--vxe-input-disabled-color);
+    color: var(--vxe-ui-input-disabled-color);
   }
 }
 
@@ -120,7 +119,7 @@
 }
 
 .vxe-table-custom-popup--table-wrapper {
-  border-bottom: 1px solid var(--vxe-table-border-color);
+  border-bottom: 1px solid var(--vxe-ui-table-border-color);
   table {
     width: 100%;
     border: 0;
@@ -132,15 +131,15 @@
       position: sticky;
       top: 0;
       text-align: left;
-      border-top: 1px solid var(--vxe-table-border-color);
-      border-bottom: 1px solid var(--vxe-table-border-color);
-      border-left: 1px solid var(--vxe-table-border-color);
-      background-color: var(--vxe-table-header-background-color);
+      border-top: 1px solid var(--vxe-ui-table-border-color);
+      border-bottom: 1px solid var(--vxe-ui-table-border-color);
+      border-left: 1px solid var(--vxe-ui-table-border-color);
+      background-color: var(--vxe-ui-table-header-background-color);
       z-index: 7;
     }
     td {
-      border-top: 1px solid var(--vxe-table-border-color);
-      border-left: 1px solid var(--vxe-table-border-color);
+      border-top: 1px solid var(--vxe-ui-table-border-color);
+      border-left: 1px solid var(--vxe-ui-table-border-color);
     }
     tr {
       &:first-child {
@@ -149,7 +148,7 @@
         }
       }
       &:hover {
-        background-color: var(--vxe-table-row-hover-background-color);
+        background-color: var(--vxe-ui-table-row-hover-background-color);
       }
     }
     th,
@@ -157,7 +156,7 @@
       height: 44px;
       padding: 0 0.6em;
       &:last-child {
-        border-right: 1px solid var(--vxe-table-border-color);
+        border-right: 1px solid var(--vxe-ui-table-border-color);
       }
     }
   }
@@ -170,13 +169,13 @@
   left: 0;
   padding: 0.6em 1em 0.6em 1.8em;
   max-width: 300px;
-  border-radius: var(--vxe-border-radius);
+  border-radius: var(--vxe-ui-border-radius);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
-  background-color: var(--vxe-table-body-background-color);
+  background-color: var(--vxe-ui-layout-background-color);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   z-index: 33;
 }
@@ -254,7 +253,7 @@
     left: -1px;
     width: calc(100% + 1px);
     height: 3px;
-    background-color: var(--vxe-primary-color);
+    background-color: var(--vxe-ui-font-primary-color);
     z-index: 12;
   }
   &:last-child {

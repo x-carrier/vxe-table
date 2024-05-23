@@ -1,14 +1,14 @@
 import { nextTick } from 'vue'
 import XEUtils from 'xe-utils'
-import { renderer } from '@vxe-ui/core'
+import { renderer, hooks } from '@vxe-ui/core'
 import { toFilters, handleFieldOrColumn } from '../../src/util'
 import { getDomNode, triggerEvent } from '../../../ui/src/dom'
 
-import type { VxeGlobalHooksHandles, TableFilterMethods, TableFilterPrivateMethods } from '../../../../types/all'
+import type { TableFilterMethods, TableFilterPrivateMethods } from '../../../../types'
 
 const tableFilterMethodKeys: (keyof TableFilterMethods)[] = ['setFilter', 'clearFilter', 'getCheckedFilters']
 
-const tableFilterHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableFilterModule', {
   setupTable ($xeTable) {
     const { props, reactData, internalData } = $xeTable
     const { refTableBody, refTableFilter } = $xeTable.getRefMaps()
@@ -279,6 +279,4 @@ const tableFilterHook: VxeGlobalHooksHandles.HookOptions = {
   setupGrid ($xeGrid) {
     return $xeGrid.extendTableMethods(tableFilterMethodKeys)
   }
-}
-
-export default tableFilterHook
+})

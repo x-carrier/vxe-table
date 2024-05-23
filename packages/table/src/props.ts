@@ -1,7 +1,7 @@
 import { PropType } from 'vue'
 import { getConfig } from '@vxe-ui/core'
 
-import type { VxeTablePropTypes } from '../../../types/all'
+import type { VxeTablePropTypes } from '../../../types'
 
 export default {
   /** 基本属性 */

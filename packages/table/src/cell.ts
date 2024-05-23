@@ -1,12 +1,12 @@
 import { h, VNode } from 'vue'
 import XEUtils from 'xe-utils'
-import { getI18n, getIcon, renderer } from '@vxe-ui/core'
+import { getI18n, getIcon, renderer, VxeComponentSlotType } from '@vxe-ui/core'
 import { getFuncText, isEnableConf, formatText, eqEmptyValue } from '../../ui/src/utils'
 import { updateCellTitle } from '../../ui/src/dom'
 import { createColumn, getRowid } from './util'
 import { getSlotVNs } from '../../ui/src/vn'
 
-import type { VxeComponentSlotType, VxeTableConstructor, VxeTableDefines, VxeTablePrivateMethods } from '../../../types/all'
+import type { VxeTableConstructor, VxeTableDefines, VxeTablePrivateMethods } from '../../../types'
 
 function renderTitlePrefixIcon (params: VxeTableDefines.CellRenderHeaderParams) {
   const { $table, column } = params

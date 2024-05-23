@@ -4,7 +4,7 @@ import XEUtils from 'xe-utils'
 import { formatText } from '../../../ui/src/utils'
 
 import type { VxeModalComponent, VxeInputComponent, VxeCheckboxComponent, VxeSelectComponent, VxeButtonComponent } from 'vxe-pc-ui'
-import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types/all'
+import type { VxeTablePrivateMethods, VxeTableConstructor, VxeTableMethods } from '../../../../types'
 
 export default defineComponent({
   name: 'VxeTableExportPanel',
@@ -213,53 +213,59 @@ export default defineComponent({
             }, [
               h('tbody', [
                 [
-                  isPrint ? createCommentVNode() : h('tr', [
-                    h('td', getI18n('vxe.export.expName')),
-                    h('td', [
-                      h(resolveComponent('vxe-input') as VxeInputComponent, {
-                        ref: xInputFilename,
-                        modelValue: defaultOptions.filename,
-                        type: 'text',
-                        clearable: true,
-                        placeholder: getI18n('vxe.export.expNamePlaceholder'),
-                        'onUpdate:modelValue' (value: any) {
-                          defaultOptions.filename = value
-                        }
-                      })
-                    ])
-                  ]),
-                  isPrint ? createCommentVNode() : h('tr', [
-                    h('td', getI18n('vxe.export.expType')),
-                    h('td', [
-                      h(resolveComponent('vxe-select') as VxeSelectComponent, {
-                        modelValue: defaultOptions.type,
-                        options: storeData.typeList.map((item: any) => {
-                          return {
-                            value: item.value,
-                            label: getI18n(item.label)
+                  isPrint
+                    ? createCommentVNode()
+                    : h('tr', [
+                      h('td', getI18n('vxe.export.expName')),
+                      h('td', [
+                        h(resolveComponent('vxe-input') as VxeInputComponent, {
+                          ref: xInputFilename,
+                          modelValue: defaultOptions.filename,
+                          type: 'text',
+                          clearable: true,
+                          placeholder: getI18n('vxe.export.expNamePlaceholder'),
+                          'onUpdate:modelValue' (value: any) {
+                            defaultOptions.filename = value
                           }
-                        }),
-                        'onUpdate:modelValue' (value: any) {
-                          defaultOptions.type = value
-                        }
-                      })
+                        })
+                      ])
+                    ]),
+                  isPrint
+                    ? createCommentVNode()
+                    : h('tr', [
+                      h('td', getI18n('vxe.export.expType')),
+                      h('td', [
+                        h(resolveComponent('vxe-select') as VxeSelectComponent, {
+                          modelValue: defaultOptions.type,
+                          options: storeData.typeList.map((item: any) => {
+                            return {
+                              value: item.value,
+                              label: getI18n(item.label)
+                            }
+                          }),
+                          'onUpdate:modelValue' (value: any) {
+                            defaultOptions.type = value
+                          }
+                        })
+                      ])
+                    ]),
+                  isPrint || showSheet
+                    ? h('tr', [
+                      h('td', getI18n('vxe.export.expSheetName')),
+                      h('td', [
+                        h(resolveComponent('vxe-input') as VxeInputComponent, {
+                          ref: xInputSheetname,
+                          modelValue: defaultOptions.sheetName,
+                          type: 'text',
+                          clearable: true,
+                          placeholder: getI18n('vxe.export.expSheetNamePlaceholder'),
+                          'onUpdate:modelValue' (value: any) {
+                            defaultOptions.sheetName = value
+                          }
+                        })
+                      ])
                     ])
-                  ]),
-                  isPrint || showSheet ? h('tr', [
-                    h('td', getI18n('vxe.export.expSheetName')),
-                    h('td', [
-                      h(resolveComponent('vxe-input') as VxeInputComponent, {
-                        ref: xInputSheetname,
-                        modelValue: defaultOptions.sheetName,
-                        type: 'text',
-                        clearable: true,
-                        placeholder: getI18n('vxe.export.expSheetNamePlaceholder'),
-                        'onUpdate:modelValue' (value: any) {
-                          defaultOptions.sheetName = value
-                        }
-                      })
-                    ])
-                  ]) : createCommentVNode(),
+                    : createCommentVNode(),
                   h('tr', [
                     h('td', getI18n('vxe.export.expMode')),
                     h('td', [
@@ -361,15 +367,17 @@ export default defineComponent({
                             defaultOptions.isMerge = value
                           }
                         }),
-                        isPrint ? createCommentVNode() : h(resolveComponent('vxe-checkbox') as VxeCheckboxComponent, {
-                          modelValue: supportStyle ? defaultOptions.useStyle : false,
-                          disabled: !supportStyle,
-                          title: getI18n('vxe.export.expUseStyleTitle'),
-                          content: getI18n('vxe.export.expOptUseStyle'),
-                          'onUpdate:modelValue' (value: any) {
-                            defaultOptions.useStyle = value
-                          }
-                        }),
+                        isPrint
+                          ? createCommentVNode()
+                          : h(resolveComponent('vxe-checkbox') as VxeCheckboxComponent, {
+                            modelValue: supportStyle ? defaultOptions.useStyle : false,
+                            disabled: !supportStyle,
+                            title: getI18n('vxe.export.expUseStyleTitle'),
+                            content: getI18n('vxe.export.expOptUseStyle'),
+                            'onUpdate:modelValue' (value: any) {
+                              defaultOptions.useStyle = value
+                            }
+                          }),
                         h(resolveComponent('vxe-checkbox') as VxeCheckboxComponent, {
                           modelValue: hasTree ? defaultOptions.isAllExpand : false,
                           disabled: !hasTree,

@@ -1,4 +1,4 @@
-import { defineComponent, h, createCommentVNode, ComponentPublicInstance, resolveComponent, ComponentOptions, reactive, ref, Ref, provide, inject, nextTick, onActivated, onDeactivated, onBeforeUnmount, onUnmounted, watch, computed, ComputedRef, onMounted } from 'vue'
+import { defineComponent, h, createCommentVNode, ComponentPublicInstance, resolveComponent, reactive, ref, Ref, provide, inject, nextTick, onActivated, onDeactivated, onBeforeUnmount, onUnmounted, watch, computed, ComputedRef, onMounted } from 'vue'
 import XEUtils from 'xe-utils'
 import { browse, isPx, isScale, hasClass, addClass, removeClass, getEventTargetNode, getPaddingTopBottomSize, setScrollTop, setScrollLeft, isNodeElement } from '../../ui/src/dom'
 import { getLastZIndex, nextZIndex, hasChildrenList, getFuncText, isEnableConf, formatText, eqEmptyValue } from '../../ui/src/utils'
@@ -11,9 +11,14 @@ import tableProps from './props'
 import tableEmits from './emits'
 import { getRowUniqueId, clearTableAllStatus, getRowkey, getRowid, rowToVisible, colToVisible, getCellValue, setCellValue, handleFieldOrColumn, toTreePathSeq, restoreScrollLocation, restoreScrollListener, XEBodyScrollElement, getRootColumn } from './util'
 import { getSlotVNs } from '../../ui/src/vn'
+import TableCustomPanelComponent from '../module/custom/panel'
+import TableFilterPanelComponent from '../module/filter/panel'
+import TableImportPanelComponent from '../module/export/import-panel'
+import TableExportPanelComponent from '../module/export/export-panel'
+import TableMenuPanelComponent from '../module/menu/panel'
 
-import type { VxeLoadingComponent, VxeTooltipInstance } from 'vxe-pc-ui'
-import type { VxeGridConstructor, VxeGridPrivateMethods, VxeTableConstructor, TableReactData, TableInternalData, VxeTablePropTypes, VxeToolbarConstructor, TablePrivateMethods, VxeTablePrivateRef, VxeTablePrivateComputed, VxeTablePrivateMethods, TableMethods, VxeTableMethods, VxeTableDefines, VxeTableProps, VxeColumnPropTypes } from '../../../types/all'
+import type { VxeLoadingComponent, VxeTooltipInstance, VxeTooltipComponent } from 'vxe-pc-ui'
+import type { VxeGridConstructor, VxeGridPrivateMethods, VxeTableConstructor, TableReactData, TableInternalData, VxeTablePropTypes, VxeToolbarConstructor, TablePrivateMethods, VxeTablePrivateRef, VxeTablePrivateComputed, VxeTablePrivateMethods, TableMethods, VxeTableMethods, VxeTableDefines, VxeTableProps, VxeColumnPropTypes } from '../../../types'
 
 const isWebkit = browse['-webkit'] && !browse.edge
 
@@ -6372,7 +6377,7 @@ export default defineComponent({
             fixedColumn
           })
           : createCommentVNode(),
-        h(TableBodyComponent as ComponentOptions, {
+        h(TableBodyComponent, {
           ref: isFixedLeft ? refTableLeftBody : refTableRightBody,
           fixedType,
           tableData,
@@ -6862,7 +6867,7 @@ export default defineComponent({
             /**
              * 表体
              */
-            h(TableBodyComponent as ComponentOptions, {
+            h(TableBodyComponent, {
               ref: refTableBody,
               tableData,
               tableColumn
@@ -6937,7 +6942,7 @@ export default defineComponent({
          * 自定义列
          */
         initStore.custom
-          ? h(resolveComponent('vxe-table-custom-panel') as ComponentOptions, {
+          ? h(TableCustomPanelComponent, {
             ref: refTableCustom,
             customStore
           })
@@ -6946,7 +6951,7 @@ export default defineComponent({
          * 筛选
          */
         initStore.filter
-          ? h(resolveComponent('vxe-table-filter-panel') as ComponentOptions, {
+          ? h(TableFilterPanelComponent, {
             ref: refTableFilter,
             filterStore
           })
@@ -6955,7 +6960,7 @@ export default defineComponent({
          * 导入
          */
         initStore.import && props.importConfig
-          ? h(resolveComponent('vxe-table-import-panel') as ComponentOptions, {
+          ? h(TableImportPanelComponent, {
             defaultOptions: reactData.importParams,
             storeData: reactData.importStore
           })
@@ -6964,7 +6969,7 @@ export default defineComponent({
          * 导出/导出
          */
         initStore.export && (props.exportConfig || props.printConfig)
-          ? h(resolveComponent('vxe-table-export-panel') as ComponentOptions, {
+          ? h(TableExportPanelComponent, {
             defaultOptions: reactData.exportParams,
             storeData: reactData.exportStore
           })
@@ -6973,7 +6978,7 @@ export default defineComponent({
          * 快捷菜单
          */
         isMenu
-          ? h(resolveComponent('vxe-table-menu-panel') as ComponentOptions, {
+          ? h(TableMenuPanelComponent, {
             ref: refTableMenu
           })
           : createCommentVNode(),
@@ -6981,7 +6986,7 @@ export default defineComponent({
          * 通用提示
          */
         hasUseTooltip
-          ? h(resolveComponent('vxe-tooltip') as ComponentOptions, {
+          ? h(resolveComponent('vxe-tooltip') as VxeTooltipComponent, {
             ref: refCommTooltip,
             isArrow: false,
             enterable: false
@@ -6991,21 +6996,21 @@ export default defineComponent({
          * 工具提示
          */
         hasUseTooltip
-          ? h(resolveComponent('vxe-tooltip') as ComponentOptions, {
+          ? h(resolveComponent('vxe-tooltip') as VxeTooltipComponent, {
             ref: refTooltip,
-            ...tipConfig
+            ...tipConfig as any
           })
           : createCommentVNode(),
         /**
          * 校验提示
          */
         hasUseTooltip && props.editRules && validOpts.showMessage && (validOpts.message === 'default' ? !height : validOpts.message === 'tooltip')
-          ? h(resolveComponent('vxe-tooltip') as ComponentOptions, {
+          ? h(resolveComponent('vxe-tooltip') as VxeTooltipComponent, {
             ref: refValidTooltip,
             class: [{
               'old-cell-valid': editRules && getConfig().cellVaildMode === 'obsolete'
             }, 'vxe-table--valid-error'],
-            ...(validOpts.message === 'tooltip' || tableData.length === 1 ? validTipOpts : {})
+            ...(validOpts.message === 'tooltip' || tableData.length === 1 ? validTipOpts : {}) as any
           })
           : createCommentVNode()
       ])

@@ -1,15 +1,15 @@
 import { reactive, nextTick } from 'vue'
 import XEUtils from 'xe-utils'
-import { getConfig, renderer, log, getI18n } from '@vxe-ui/core'
+import { getConfig, renderer, hooks, log, getI18n } from '@vxe-ui/core'
 import { isEnableConf } from '../../../ui/src/utils'
 import { getCellValue, setCellValue, getRowid } from '../../src/util'
 import { browse, removeClass, addClass } from '../../../ui/src/dom'
 
-import type { VxeGlobalHooksHandles, TableEditMethods, TableEditPrivateMethods } from '../../../../types/all'
+import type { TableEditMethods, TableEditPrivateMethods } from '../../../../types'
 
 const tableEditMethodKeys: (keyof TableEditMethods)[] = ['insert', 'insertAt', 'insertNextAt', 'remove', 'removeCheckboxRow', 'removeRadioRow', 'removeCurrentRow', 'getRecordset', 'getInsertRecords', 'getRemoveRecords', 'getUpdateRecords', 'getEditRecord', 'getActiveRecord', 'getSelectedCell', 'clearEdit', 'clearActived', 'clearSelected', 'isEditByRow', 'isActiveByRow', 'setEditRow', 'setActiveRow', 'setEditCell', 'setActiveCell', 'setSelectCell']
 
-const editHook: VxeGlobalHooksHandles.HookOptions = {
+hooks.add('tableEditModule', {
   setupTable ($xeTable) {
     const { props, reactData, internalData } = $xeTable
     const { refElem } = $xeTable.getRefMaps()
@@ -843,6 +843,4 @@ const editHook: VxeGlobalHooksHandles.HookOptions = {
   setupGrid ($xeGrid) {
     return $xeGrid.extendTableMethods(tableEditMethodKeys)
   }
-}
-
-export default editHook
+})
