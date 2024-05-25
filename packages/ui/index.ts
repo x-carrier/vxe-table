@@ -1,4 +1,4 @@
-import { VxeUI, setConfig, setIcon } from '@vxe-ui/core'
+import { VxeUI, setConfig, setIcon, VxeGlobalConfig, log } from '@vxe-ui/core'
 
 VxeUI.tableVersion = process.env.VUE_APP_VXE_TABLE_VERSION as string
 
@@ -222,6 +222,19 @@ setIcon({
   TOOLBAR_TOOLS_FIXED_RIGHT: iconPrefix + 'fixed-right',
   TOOLBAR_TOOLS_FIXED_RIGHT_ACTIVE: iconPrefix + 'fixed-right-fill'
 })
+
+export function config (options?: VxeGlobalConfig) {
+  log.warn('vxe.error.delFunc', ['config', 'setConfig'])
+  return setConfig(options)
+}
+
+export function setup (options?: VxeGlobalConfig) {
+  log.warn('vxe.error.delFunc', ['setup', 'setConfig'])
+  return setConfig(options)
+}
+
+// 兼容老版本
+export const VXETable = VxeUI
 
 export * from '@vxe-ui/core'
 export default VxeUI
