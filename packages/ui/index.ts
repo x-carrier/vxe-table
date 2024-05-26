@@ -1,6 +1,6 @@
 import { VxeUI, setConfig, setIcon, VxeGlobalConfig, log } from '@vxe-ui/core'
 
-VxeUI.tableVersion = process.env.VUE_APP_VXE_TABLE_VERSION as string
+VxeUI.tableVersion = process.env.VUE_APP_VXE_VERSION as string
 
 setConfig({
   emptyCell: '　',

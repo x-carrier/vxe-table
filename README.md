@@ -90,9 +90,10 @@ Get on [unpkg](https://unpkg.com/vxe-table/) and [cdnjs](https://cdn.jsdelivr.ne
 ### npm
 
 ```javascript
-import { createApp } from 'vue'
+// ...
 import VxeUITable from 'vxe-table'
 import 'vxe-table/lib/style.css'
+// ...
 
 createApp(App).use(VxeUITable).mount('#app')
 ```
