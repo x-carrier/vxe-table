@@ -6641,11 +6641,11 @@ export default defineComponent({
           const { exportConfig, importConfig } = props
           const exportOpts = computeExportOpts.value
           const importOpts = computeImportOpts.value
-          if (importConfig && importOpts.types && !importOpts.importMethod && !XEUtils.includeArrays(getConfig().importTypes, importOpts.types)) {
-            log.warn('vxe.error.errProp', [`export-config.types=${importOpts.types.join(',')}`, importOpts.types.filter((type: string) => XEUtils.includes(getConfig().importTypes, type)).join(',') || getConfig().importTypes.join(',')])
+          if (importConfig && importOpts.types && !importOpts.importMethod && !XEUtils.includeArrays(XEUtils.keys(importOpts._typeMaps), importOpts.types)) {
+            log.warn('vxe.error.errProp', [`export-config.types=${importOpts.types.join(',')}`, importOpts.types.filter((type: string) => XEUtils.includes(XEUtils.keys(importOpts._typeMaps), type)).join(',') || XEUtils.keys(importOpts._typeMaps).join(',')])
           }
-          if (exportConfig && exportOpts.types && !exportOpts.exportMethod && !XEUtils.includeArrays(getConfig().exportTypes, exportOpts.types)) {
-            log.warn('vxe.error.errProp', [`export-config.types=${exportOpts.types.join(',')}`, exportOpts.types.filter((type: string) => XEUtils.includes(getConfig().exportTypes, type)).join(',') || getConfig().exportTypes.join(',')])
+          if (exportConfig && exportOpts.types && !exportOpts.exportMethod && !XEUtils.includeArrays(XEUtils.keys(exportOpts._typeMaps), exportOpts.types)) {
+            log.warn('vxe.error.errProp', [`export-config.types=${exportOpts.types.join(',')}`, exportOpts.types.filter((type: string) => XEUtils.includes(XEUtils.keys(exportOpts._typeMaps), type)).join(',') || XEUtils.keys(exportOpts._typeMaps).join(',')])
           }
         }
 

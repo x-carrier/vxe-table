@@ -1,4 +1,4 @@
-import { VxeUI, setConfig } from 'vxe-pc-ui'
+import { VxeUI, VxeUIExport, msetConfig } from 'vxe-pc-ui'
 import VxeColumn from 'vxe-pc-ui/types/components/column'
 import VxeColgroup from 'vxe-pc-ui/types/components/colgroup'
 import VxeTable from 'vxe-pc-ui/types/components/table'
@@ -31,6 +31,12 @@ export type config = typeof setConfig
  * @deprecated
  */
 export const VXETable = VxeUI
+
+/**
+ * 已废弃，请使用 VxeUIExport
+ * @deprecated
+ */
+export type VXETableCore = VxeUIExport
 
 export * from 'vxe-pc-ui'
 

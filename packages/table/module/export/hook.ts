@@ -1,6 +1,6 @@
 import { inject, nextTick } from 'vue'
 import XEUtils from 'xe-utils'
-import { VxeUI, getConfig, getI18n, hooks, renderer, log } from '@vxe-ui/core'
+import { VxeUI, getI18n, hooks, renderer, log } from '@vxe-ui/core'
 import { isColumnInfo, mergeBodyMethod, getCellValue } from '../../src/util'
 import { parseFile, formatText } from '../../../ui/src/utils'
 import { createHtmlPage, getExportBlobByContent } from './util'
@@ -852,9 +852,10 @@ hooks.add('tableExportModule', {
     const handleFileImport = (file: File, opts: any) => {
       const { importMethod, afterImportMethod } = opts
       const { type, filename } = parseFile(file)
+      const importOpts = computeImportOpts.value
 
       // 检查类型，如果为自定义导出，则不需要校验类型
-      if (!importMethod && !XEUtils.includes(getConfig().importTypes, type)) {
+      if (!importMethod && !XEUtils.includes(XEUtils.keys(importOpts._typeMaps), type)) {
         if (opts.message !== false) {
           if (VxeUI.modal) {
             VxeUI.modal.message({ content: getI18n('vxe.error.notType', [type]), status: 'error' })
@@ -928,13 +929,14 @@ hooks.add('tableExportModule', {
       const { treeConfig, showHeader, showFooter } = props
       const { initStore, mergeList, isGroup, footerTableData, exportStore, exportParams } = reactData
       const { collectColumn } = internalData
+      const exportOpts = computeExportOpts.value
       const hasTree = treeConfig
       const customOpts = computeCustomOpts.value
       const selectRecords = $xeTable.getCheckboxRecords()
       const hasFooter = !!footerTableData.length
       const hasMerge = !hasTree && mergeList.length
       const defOpts = Object.assign({ message: true, isHeader: showHeader, isFooter: showFooter }, options)
-      const types: string[] = defOpts.types || getConfig().exportTypes
+      const types: string[] = defOpts.types || XEUtils.keys(exportOpts._typeMaps)
       const modes: string[] = defOpts.modes
       const checkMethod = customOpts.checkMethod
       const exportColumns = collectColumn.slice(0)
@@ -1113,7 +1115,7 @@ hooks.add('tableExportModule', {
         }
 
         // 检查类型，如果为自定义导出，则不需要校验类型
-        if (!opts.exportMethod && !XEUtils.includes(getConfig().exportTypes, type)) {
+        if (!opts.exportMethod && !XEUtils.includes(XEUtils.keys(exportOpts._typeMaps), type)) {
           if (process.env.VUE_APP_VXE_ENV === 'development') {
             log.err('vxe.error.notType', [type])
           }
@@ -1192,7 +1194,7 @@ hooks.add('tableExportModule', {
       importData (options) {
         const importOpts = computeImportOpts.value
         const opts = Object.assign({
-          types: getConfig().importTypes
+          types: XEUtils.keys(importOpts._typeMaps)
           // beforeImportMethod: null,
           // afterImportMethod: null
         }, importOpts, options)
@@ -1255,7 +1257,7 @@ hooks.add('tableExportModule', {
         const { treeConfig, importConfig } = props
         const { initStore, importStore, importParams } = reactData
         const importOpts = computeImportOpts.value
-        const defOpts = Object.assign({ mode: 'insert', message: true, types: getConfig().importTypes }, options, importOpts)
+        const defOpts = Object.assign({ mode: 'insert', message: true, types: XEUtils.keys(importOpts._typeMaps) }, options, importOpts)
         const { types } = defOpts
         const isTree = !!treeConfig
         if (isTree) {

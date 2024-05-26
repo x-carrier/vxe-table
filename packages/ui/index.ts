@@ -4,8 +4,6 @@ VxeUI.tableVersion = process.env.VUE_APP_VXE_TABLE_VERSION as string
 
 setConfig({
   emptyCell: '　',
-  exportTypes: [],
-  importTypes: [],
 
   table: {
     fit: true,
@@ -96,9 +94,16 @@ setConfig({
       showAsterisk: true
     },
     importConfig: {
+      _typeMaps: {},
       modes: ['insert', 'covering']
     },
     exportConfig: {
+      _typeMaps: {
+        csv: 1,
+        html: 1,
+        xml: 1,
+        txt: 1
+      },
       modes: ['current', 'selected']
     },
     printConfig: {
